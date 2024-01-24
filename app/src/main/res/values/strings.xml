@@ -1,0 +1,274 @@
+<resources>
+    <string name="app_name">AirA01b</string>
+    <string name="app_name2">AirA01a</string>
+    <string name="blank"> </string>
+    <string name="icon">icon</string>
+    <string name="sdk_version">SDK Version</string>
+    <string name="shutter">shutter</string>
+    <string name="manual_focus">Manual Focus</string>
+    <string name="af_lock">AF Lock</string>
+    <string name="ae_lock">AE Lock</string>
+    <string name="focus_assist">Focus Assist</string>
+    <string name="show_grid">Show Grid</string>
+    <string name="exposure_settings">exposure</string>
+    <string name="iso_settings">ISO</string>
+    <string name="filter">filter</string>
+    <string name="configuration">Configuration</string>
+    <string name="restore">Restore</string>
+    <string name="shutter_control_af_failed">AF Fail</string>
+    <string name="shoot_camera">Captured.</string>
+    <string name="action_delete_picture">Delete</string>
+    <string name="action_delete_movie">Delete</string>
+    <string name="favorite">Favorite</string>
+    <string name="favorite_configuration">Favorite Configurations</string>
+
+    <string name="dialog_title_connect_failed">Connect failed</string>
+    <string name="dialog_title_button_retry">Retry</string>
+    <string name="dialog_title_button_network_settings">WiFi Settings</string>
+
+    <string name="connect_start">start</string>
+    <string name="connect_check_wifi">check WIFI</string>
+    <string name="connect_connect">connecting</string>
+    <string name="connect_connected">connected</string>
+    <string name="connect_change_run_mode">changeRunMode</string>
+    <string name="connect_restore_camera_settings">restoreCameraSettings</string>
+
+    <string name="pref_cat_take_picture">Shot Settings</string>
+    <string name="pref_take_mode">Take Mode</string>
+    <string name="pref_ae_mode">AE Mode</string>
+    <string name="pref_wb_mode">White Balance</string>
+
+    <string name="pref_cat_exposure_settings">Exposure setting</string>
+    <string name="pref_exposure_compensation">Exposure compensation</string>
+    <string name="pref_shutter_speed">Shutter Speed</string>
+    <string name="pref_aperture">Aperture</string>
+    <string name="pref_iso_sensitivity">ISO Sensitivity</string>
+
+    <string name="pref_cat_camera">Camera</string>
+    <string name="pref_cat_phone_camera">Phone Camera</string>
+    <string name="pref_cat_live_view">Live View Settings</string>
+    <string name="pref_live_view_quality">Live View Quality</string>
+    <string name="pref_focus_grid_type">Focus Grid Type</string>
+    <string name="pref_focus_assist_type">Focus Assist Type</string>
+    <string name="pref_camera_sound_volume">Shutter Sound</string>
+    <string name="pref_image_size">Image Size</string>
+    <string name="pref_take_raw">Take Raw</string>
+    <string name="pref_camera_rotation">Picture Rotation</string>
+    <string name="pref_phone_camera_id">Camera ID</string>
+    <string name="pref_only_camera">Only Remote Camera</string>
+    <string name="pref_level_gauge">Level Gauge</string>
+
+    <string name="pref_effect">Effect</string>
+    <string name="pref_color_tone">Color Tone</string>
+    <string name="pref_recently_art_filter">Art Filter</string>
+
+    <string name="pref_cat_info">Information</string>
+    <string name="pref_focal_length">Focal Length</string>
+    <string name="pref_lens_status">Lens Status</string>
+    <string name="pref_media_status">SD Card Status</string>
+    <string name="pref_camera_version">Camera Version</string>
+    <string name="pref_camerakit_version">Camera kit Version</string>
+
+    <string name="pref_cat_application_control">App. Control</string>
+    <string name="pref_playback_camera">Camera Playback</string>
+    <string name="pref_playback_phone">Phone Playback</string>
+    <string name="pref_power_off">Camera Power OFF</string>
+    <string name="pref_exit_power_off">Camera Power OFF &amp; Exit</string>
+
+    <string name="pref_cat_lower_panel">Lower Panel Screen</string>
+    <string name="pref_lower_panel_feature">Lower Panel Feature</string>
+    <string name="pref_cat_show_sample">Sample Image</string>
+    <string name="pref_show_sample_image">Show Sample Image</string>
+    <string name="pref_select_sample_image">Select Sample Image</string>
+    <string name="pref_show_sample_image_0">Show Phone Camera</string>
+    <string name="pref_show_sample_image_1">Show Sample Image</string>
+    <string name="pref_show_sample_image_2">Show Operation Panel</string>
+    <string name="pref_show_sample_image_3">Time Shift Screen</string>
+
+    <string name="pref_lower_control_sensitivity">Lower Control Flick Sensitivity</string>
+    <string name="pref_synchronize_datetime">Synchronize Datetime</string>
+    <string name="action_synchroize_datetime">Synchronize Datetime</string>
+    <string name="confirm_synchronize_datetime">Synchronize datetime with the camera, OK?</string>
+
+    <string name="pref_live_view_magnify">Live View Magnify Setting</string>
+    <string name="pref_capture_both_camera_and_live_view">Capture both camera and Live View</string>
+    <string name="pref_share_live_view_image">Share Captured Live View Image</string>
+
+    <string name="pref_cat_bracketing">Bracketing</string>
+    <string name="pref_use_bracketing">Bracketing Shot</string>
+    <string name="pref_bracketing_type">Bracketing Type</string>
+    <string name="pref_bracketing_count">Bracketing Count</string>
+    <string name="pref_bracketing_duration">Bracketing Duration(sec.)</string>
+
+    <string name="pref_cat_others">Others</string>
+    <string name="pref_custom_splash">Use custom Splash Image</string>
+    <string name="pref_select_splash_image">Select Splash Image</string>
+    <string name="pref_call_share_after_save">Share after Save</string>
+    <string name="pref_manipulate_image">Manipulate Image</string>
+    <string name="pref_opencv_version">OpenCV Version</string>
+    <string name="pref_cat_gokigen">GOKIGEN Project</string>
+    <string name="pref_instruction_manual">AirA01b Instructions</string>
+    <string name="pref_privacy_policy">Privacy Policy</string>
+
+    <string name="dialog_title_confirmation">Confirmation</string>
+    <string name="dialog_positive_power_off">OK</string>
+    <string name="dialog_positive_execute">Execute</string>
+    <string name="dialog_negative_cancel">Cancel</string>
+    <string name="dialog_message_disconnect">Disconnect</string>
+    <string name="dialog_message_power_off">Power Off</string>
+    <string name="dialog_message_exit_application">Exit Application</string>
+    <string name="dialog_positive_exit_application">Execute</string>
+
+    <string name="dialog_title_loading_properties">Loading Camera Properties</string>
+    <string name="dialog_message_loading_properties">Please wait&#8230;</string>
+
+    <string name="dialog_message_restore_camera_property">Restore Camera Property</string>
+    <string name="dialog_positive_restore_property">Execute</string>
+
+    <string name="dialog_download_title">Get Image</string>
+    <string name="dialog_download_movie_title">Get Movie</string>
+    <string name="dialog_download_file_title">Get File</string>
+    <string name="dialog_download_raw_title">Get File</string>
+    <string name="dialog_download_message">File Name:</string>
+    <string name="dialog_get_information_title">Getting Picture Information</string>
+    <string name="download_control_download_failed">Download failed</string>
+    <string name="download_control_save_failed">Save failed</string>
+    <string name="download_control_get_information_failed">Get information failed</string>
+    <string name="download_control_get_information_title">Information</string>
+    <string name="download_control_save_success">Saved</string>
+
+    <string name="exif_datetime_title">Date : </string>
+    <string name="exif_exposure_time_title">Exposure Time : </string>
+    <string name="exif_aperture_title">Aperture : </string>
+    <string name="exif_focal_length_title">Focal Length : </string>
+    <string name="exif_focal_35mm_equiv_title">35mm Equiv.</string>
+    <string name="exif_iso_title">ISO : </string>
+    <string name="exif_maker_title">Maker : </string>
+    <string name="exif_camera_title">Model : </string>
+    <string name="exif_camera_mode_title">Mode :</string>
+    <string name="exif_metering_mode_title">Metering Mode :</string>
+    <string name="exif_custom_process_title">(Custom Image Processing)</string>
+    <string name="exif_with_gps">(Geolocation)</string>
+
+    <string name="action_info">info</string>
+    <string name="action_refreash">refreash</string>
+    <string name="action_download">download</string>
+    <string name="action_download_movie">download</string>
+    <string name="action_download_original_movie">Original Size</string>
+    <string name="action_get_information">picture information</string>
+    <string name="action_download_original_size">Original Size</string>
+    <string name="action_download_2048x1536">2048 x 1536</string>
+    <string name="action_download_1920x1440">1920 x 1440</string>
+    <string name="action_download_1600x1200">1600 x 1200</string>
+    <string name="action_download_1024x768">1024 x 768</string>
+    <string name="action_download_raw">RAW</string>
+    <string name="action_download_with_raw">Download with RAW</string>
+
+    <string name="auto_save_props">(Auto Save)</string>
+    <string name="title_tab_title_load">Load</string>
+    <string name="title_tab_title_save">Save</string>
+    <string name="title_my_settings">Favorite Camera Properties</string>
+    <string name="saved_my_props">Saved Property : </string>
+    <string name="save_props">Save</string>
+    <string name="hint_save_props">Label</string>
+
+    <string name="dialog_start_save_property_message">Please Wait</string>
+    <string name="dialog_start_save_property_title">Storing Properties&#8230;</string>
+    <string name="dialog_start_load_property_message">Please Wait</string>
+    <string name="dialog_start_load_property_title">Setting Properties&#8230;</string>
+    <string name="restored_my_props">Restored Property : </string>
+
+    <string name="media_busy">Busy</string>
+    <string name="media_error">Media</string>
+    <string name="high_temperature_warning">High Temp.</string>
+    <string name="exposure_metering_warning">Exposure</string>
+    <string name="iso_sensitivity_warning">Exposure(ISO)</string>
+    <string name="fatal_cannot_use_camera">The CameraKit SDK can not work because the running mode of camera is UNKNOWN.   So please long press the power button of camera more than 8 seconds. (This is the camera reset operation.) After that turn on the camera power again.</string>
+    <string name="camera_reset_required">The camera reset operation is required.</string>
+
+    <string name="data_loading">Loading&#8230;</string>
+    <string name="cannot_load_bitmap">Image load failed&#8230; </string>
+
+    <string name="minus_image_label">-</string>
+    <string name="plus_image_label">+</string>
+
+    <string name="share_chooser_title">Share</string>
+    <string name="source_image_1">Source Image 1</string>
+    <string name="source_image_2">Source Image 2</string>
+    <string name="source_image_title">Source Image</string>
+    <string name="select_source_image_label">Select Image&#8230;</string>
+    <string name="effect_image_title">Image Effect</string>
+    <string name="select_effect_image_label">Select&#8230;</string>
+    <string name="destination_image_title">Target Image</string>
+    <string name="save_image_label">Save</string>
+    <string name="share_image_label">Share&#8230;</string>
+    <string name="save_button_label_index">Save</string>
+    <string name="data_saving">Saving&#8230;</string>
+    <string name="effected_save_image_failure">Image save failed&#8230;</string>
+    <string name="effected_save_image_success">Image saved.</string>
+    <string name="image_save_first">Please save image first.</string>
+    <string name="share_image_failed">Share-image is failure.</string>
+
+    <string name="live_view_magnify">LV Magnify</string>
+    <string name="gps">GPS</string>
+    <string name="action_save_manipulate_image">Save Image</string>
+
+    <string name="dialog_title_select_image_effect">Select Image Effect</string>
+    <string name="warning_please_select_both_image">Please Select both Image File.</string>
+    <string name="effect_process_failure">Image Processing is failure.</string>
+    <string name="warning_picture_size_exceeded">Target image size is too large.</string>
+    <string name="video_recording">&#9679;REC</string>
+    <string name="video_failure">FAILED!</string>
+    <string name="taking_picture">Shooting</string>
+    <string name="notify_sequential">OK!</string>
+
+    <string name="ble_setting_is_off">Bluetooth is currently off.</string>
+    <string name="launch_fail_via_ble">  Launch fail. via BLE : </string>
+
+    <string name="pref_cat_initialize">App. Startup</string>
+    <string name="pref_bluetooth_power_on">Bluetooth Power On</string>
+    <string name="pref_summary_bluetooth_power_on">Camera Power on via Bluetooth</string>
+
+    <string name="hint_save_bt_name">Name</string>
+    <string name="hint_save_bt_passcode">Passcode</string>
+    <string name="pref_air_bt">Olympus Air Settings</string>
+    <string name="pref_summary_air_bt">Entry your Olympus Air</string>
+    <string name="saved_my_camera">Registerd : </string>
+
+    <string name="pref_use_playback_menu">Use playback screen menu</string>
+
+    <string name="action_select_all">Select/Deselect All</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="finish_refresh">Finished Refresh</string>
+
+    <string name="dialog_confirm_title_output_log">Share debug log</string>
+    <string name="dialog_confirm_message_output_log">Share the debug log, OK?</string>
+
+    <string name="button">Button</string>
+    <string name="select_radio_date">Date</string>
+    <string name="select_radio_path">Path</string>
+    <string name="dialog_title_batch_download">Batch Download(select size)</string>
+    <string name="dialog_positive_download">Download</string>
+    <string name="dialog_label_batch_download">Selected : </string>
+    <string name="dialog_label_select_size"> </string>
+    <string name="message_download_finished_pics">Finished. Number of Pics. : </string>
+    <string name="message_download_finished_pics_with_failure">Finished. # of Pics. : </string>
+    <string name="message_download_failure_count"> Failures : </string>
+    <string name="message_download_finished_but_failed">Download was failed&#8230; </string>
+
+    <string name="pref_number_of_cache_pictures">Max number of buffering pictures</string>
+    <string name="pref_summary_number_of_cache_pictures">Set number of buffering pictures. (Default:500, enables after restart.)</string>
+
+    <string name="dialog_title_batch_delete">Batch Delete</string>
+    <string name="comfirm_batch_delete_message">  Delete selected file(s).</string>
+    <string name="action_delete_with_raw">Delete with RAW File</string>
+    <string name="action_delete_only_raw">Delete ONLY RAW File</string>
+    <string name="dialog_label_batch_delete">Selected : </string>
+    <string name="dialog_positive_delete">Delete</string>
+
+    <string name="dialog_delete_title">DELETE FILES</string>
+    <string name="dialog_delete_message">FILE DELETING, PLEASE WAIT.</string>
+
+    <string name="action_delete">DELETE FILE(s)</string>
+
+</resources>

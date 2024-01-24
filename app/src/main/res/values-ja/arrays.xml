@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="take_mode">
+        <item >P</item>
+        <item >iAuto</item>
+        <item >A</item>
+        <item >S</item>
+        <item >M</item>
+        <item >Movie</item>
+    </string-array>
+    <string-array name="take_mode_value">
+        <item >P</item>
+        <item >iAuto</item>
+        <item >A</item>
+        <item >S</item>
+        <item >M</item>
+        <item >movie</item>
+    </string-array>
+
+    <string-array name="prop_colortone">
+        <item>FLAT</item>
+        <item>NATURAL</item>
+        <item>モノトーン</item>
+        <item>Portrait</item>
+        <item>i-Finish</item>
+        <item>Vivid</item>
+        <item>eポートレート</item>
+        <item>カラークリエーター</item>
+        <item>ポップアート</item>
+        <item>ファンタジックフォーカス</item>
+        <item>デイドリーム</item>
+        <item>ライトトーン</item>
+        <item>ラフモノクローム</item>
+        <item>トイフォト</item>
+        <item>ジオラマ</item>
+        <item>クロスプロセス</item>
+        <item>ジェントルセピア</item>
+        <item>ドラマチックトーン</item>
+        <item>リーニュークレール</item>
+        <item>ウォーターカラー</item>
+        <item>ヴィンテージ</item>
+        <item>パートカラー</item>
+    </string-array>
+    <string-array name="prop_colortone_value">
+        <item>FLAT</item>
+        <item>NATURAL</item>
+        <item>Monotone</item>
+        <item>Portrait</item>
+        <item>I_FINISH</item>
+        <item>VIVID</item>
+        <item>ePortrait</item>
+        <item>COLOR_CREATOR</item>
+        <item>POPART</item>
+        <item>FANTASIC_FOCUS</item>
+        <item>DAYDREAM</item>
+        <item>LIGHT_TONE</item>
+        <item>ROUGH_MONOCHROME</item>
+        <item>TOY_PHOTO</item>
+        <item>MINIATURE</item>
+        <item>CROSS_PROCESS</item>
+        <item>GENTLE_SEPIA</item>
+        <item>DRAMATIC_TONE</item>
+        <item>LIGNE_CLAIR</item>
+        <item>PASTEL</item>
+        <item>VINTAGE</item>
+        <item>PARTCOLOR</item>
+    </string-array>
+
+    <string-array name="ae_mode">
+        <item >AE_CENTER</item>
+        <item >AE_ESP</item>
+        <item >AE_PINPOINT</item>
+    </string-array>
+    <string-array name="ae_mode_value">
+        <item >AE_CENTER</item>
+        <item >AE_ESP</item>
+        <item >AE_PINPOINT</item>
+    </string-array>
+
+    <string-array name="wb_mode">
+        <item>WB_AUTO</item>
+        <item>MWB_SHADE</item>
+        <item>MWB_CLOUD</item>
+        <item>MWB_FINE</item>
+        <item>MWB_LAMP</item>
+        <item>MWB_FLUORESCENCE1</item>
+        <item>MWB_WATER_1</item>
+        <item>WB_CUSTOM1</item>
+    </string-array>
+    <string-array name="wb_mode_value">
+        <item>WB_AUTO</item>
+        <item>MWB_SHADE</item>
+        <item>MWB_CLOUD</item>
+        <item>MWB_FINE</item>
+        <item>MWB_LAMP</item>
+        <item>MWB_FLUORESCENCE1</item>
+        <item>MWB_WATER_1</item>
+        <item>WB_CUSTOM1</item>
+    </string-array>
+
+    <string-array name="exposure_compensation">
+        <item>-4.3</item>
+        <item>-4</item>
+        <item>-3.7</item>
+        <item>-3.3</item>
+        <item>-3</item>
+        <item>-2.7</item>
+        <item>-2.3</item>
+        <item>-2</item>
+        <item>-1.7</item>
+        <item>-1.3</item>
+        <item>-1</item>
+        <item>-0.7</item>
+        <item>-0.3</item>
+        <item>0</item>
+        <item>0.3</item>
+        <item>0.7</item>
+        <item>1</item>
+        <item>1.3</item>
+        <item>1.7</item>
+        <item>2</item>
+        <item>2.3</item>
+        <item>2.7</item>
+        <item>3</item>
+        <item>3.3</item>
+        <item>3.7</item>
+        <item>4</item>
+        <item>4.3</item>
+        <item>4.7</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="exposure_compensation_value">
+        <item>-4.3</item>
+        <item>-4</item>
+        <item>-3.7</item>
+        <item>-3.3</item>
+        <item>-3</item>
+        <item>-2.7</item>
+        <item>-2.3</item>
+        <item>-2</item>
+        <item>-1.7</item>
+        <item>-1.3</item>
+        <item>-1</item>
+        <item>-0.7</item>
+        <item>-0.3</item>
+        <item>0</item>
+        <item>0.3</item>
+        <item>0.7</item>
+        <item>1</item>
+        <item>1.3</item>
+        <item>1.7</item>
+        <item>2</item>
+        <item>2.3</item>
+        <item>2.7</item>
+        <item>3</item>
+        <item>3.3</item>
+        <item>3.7</item>
+        <item>4</item>
+        <item>4.3</item>
+        <item>4.7</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="shutter_speed">
+        <item>4"</item>
+        <item>3.2"</item>
+        <item>2.5"</item>
+        <item>2"</item>
+        <item>1.6"</item>
+        <item>1.3"</item>
+        <item>1"</item>
+        <item>1.3</item>
+        <item>1.6</item>
+        <item>2</item>
+        <item>2.5</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>8</item>
+        <item>10</item>
+        <item>13</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>80</item>
+        <item>100</item>
+        <item>125</item>
+        <item>160</item>
+        <item>200</item>
+        <item>250</item>
+        <item>320</item>
+        <item>400</item>
+        <item>500</item>
+        <item>640</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>1250</item>
+        <item>1600</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>3200</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6400</item>
+        <item>8000</item>
+        <item>10000</item>
+        <item>12800</item>
+        <item>16000</item>
+    </string-array>
+    <string-array name="shutter_speed_value">
+        <item>4"</item>
+        <item>3.2"</item>
+        <item>2.5"</item>
+        <item>2"</item>
+        <item>1.6"</item>
+        <item>1.3"</item>
+        <item>1"</item>
+        <item>1.3</item>
+        <item>1.6</item>
+        <item>2</item>
+        <item>2.5</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>8</item>
+        <item>10</item>
+        <item>13</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>80</item>
+        <item>100</item>
+        <item>125</item>
+        <item>160</item>
+        <item>200</item>
+        <item>250</item>
+        <item>320</item>
+        <item>400</item>
+        <item>500</item>
+        <item>640</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>1250</item>
+        <item>1600</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>3200</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6400</item>
+        <item>8000</item>
+        <item>10000</item>
+        <item>12800</item>
+        <item>16000</item>
+    </string-array>
+
+    <string-array name="aperture">
+        <item>1</item>
+        <item>1.1</item>
+        <item>1.2</item>
+        <item>1.4</item>
+        <item>1.6</item>
+        <item>1.8</item>
+        <item>2</item>
+        <item>2.2</item>
+        <item>2.5</item>
+        <item>2.8</item>
+        <item>3.2</item>
+        <item>3.5</item>
+        <item>4</item>
+        <item>4.5</item>
+        <item>5</item>
+        <item>5.6</item>
+        <item>6.3</item>
+        <item>7.1</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>13</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20</item>
+        <item>22</item>
+        <item>25</item>
+        <item>29</item>
+        <item>32</item>
+        <item>36</item>
+        <item>40</item>
+        <item>45</item>
+        <item>51</item>
+        <item>57</item>
+        <item>64</item>
+        <item>72</item>
+        <item>81</item>
+        <item>91</item>
+    </string-array>
+    <string-array name="aperture_value">
+        <item>1</item>
+        <item>1.1</item>
+        <item>1.2</item>
+        <item>1.4</item>
+        <item>1.6</item>
+        <item>1.8</item>
+        <item>2</item>
+        <item>2.2</item>
+        <item>2.5</item>
+        <item>2.8</item>
+        <item>3.2</item>
+        <item>3.5</item>
+        <item>4</item>
+        <item>4.5</item>
+        <item>5</item>
+        <item>5.6</item>
+        <item>6.3</item>
+        <item>7.1</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>13</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20</item>
+        <item>22</item>
+        <item>25</item>
+        <item>29</item>
+        <item>32</item>
+        <item>36</item>
+        <item>40</item>
+        <item>45</item>
+        <item>51</item>
+        <item>57</item>
+        <item>64</item>
+        <item>72</item>
+        <item>81</item>
+        <item>91</item>
+    </string-array>
+
+    <string-array name="iso_sensitivity">
+        <item>Auto</item>
+        <item>Low</item>
+        <item>200</item>
+        <item>250</item>
+        <item>320</item>
+        <item>400</item>
+        <item>500</item>
+        <item>640</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>1250</item>
+        <item>1600</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>3200</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6400</item>
+        <item>8000</item>
+        <item>10000</item>
+        <item>12800</item>
+    </string-array>
+    <string-array name="iso_sensitivity_value">
+        <item>Auto</item>
+        <item>Low</item>
+        <item>200</item>
+        <item>250</item>
+        <item>320</item>
+        <item>400</item>
+        <item>500</item>
+        <item>640</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>1250</item>
+        <item>1600</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>3200</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6400</item>
+        <item>8000</item>
+        <item>10000</item>
+        <item>12800</item>
+    </string-array>
+
+    <string-array name="live_view_quality">
+        <item >QVGA (320x240)</item>
+        <item >VGA (640x480)</item>
+        <item >SVGA (800x600)</item>
+        <item >XGA (1024x768)</item>
+        <item >QUAD VGA (1280x960)</item>
+    </string-array>
+    <string-array name="live_view_quality_value">
+        <item >QVGA</item>
+        <item >VGA</item>
+        <item >SVGA</item>
+        <item >XGA</item>
+        <item >QUAD_VGA</item>
+    </string-array>
+
+    <string-array name="focus_grid_type">
+        <item>TYPE 0</item>
+        <item>TYPE 1</item>
+        <item>TYPE 2</item>
+        <item>TYPE 3</item>
+        <item>TYPE 4</item>
+        <item>TYPE 5</item>
+        <item>TYPE 6</item>
+    </string-array>
+
+    <string-array name="focus_grid_type_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="focus_assist_type">
+        <item>TYPE 0</item>
+        <item>TYPE 1</item>
+        <item>TYPE 2</item>
+        <item>TYPE 3</item>
+        <item>TYPE 4</item>
+        <item>TYPE 5</item>
+        <item>TYPE 6</item>
+    </string-array>
+    <string-array name="focus_assist_type_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="sound_volume_level">
+        <item>OFF</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="sound_volume_level_value">
+        <item>OFF</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="camera_rotation">
+        <item>0</item>
+        <item>90</item>
+        <item>180</item>
+        <item>270</item>
+    </string-array>
+    <string-array name="camera_rotation_value">
+        <item>0</item>
+        <item>90</item>
+        <item>180</item>
+        <item>270</item>
+    </string-array>
+
+    <string-array name="lower_control_sensitivity">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+    <string-array name="lower_control_sensitivity_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+    <string-array name="phone_camera_id">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="phone_camera_id_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <array name="batterylevel_icons">
+        <item>@drawable/tt_icn_battery_unknown</item>
+        <item>@drawable/tt_icn_battery_charge</item>
+        <item>@drawable/tt_icn_battery_empty</item>
+        <item>@drawable/tt_icn_battery_half</item>
+        <item>@drawable/tt_icn_battery_middle</item>
+        <item>@drawable/tt_icn_battery_full</item>
+        <item>@drawable/tt_icn_battery_supply_empty</item>
+        <item>@drawable/tt_icn_battery_supply_half</item>
+        <item>@drawable/tt_icn_battery_supply_middle</item>
+        <item>@drawable/tt_icn_battery_supply_full</item>
+    </array>
+    <string-array name="battery_level">
+        <item>UNKNOWN</item>
+        <item>CHARGE</item>
+        <item>EMPTY</item>
+        <item>WARNING</item>
+        <item>LOW</item>
+        <item>FULL</item>
+        <item>EMPTY_AC</item>
+        <item>SUPPLY_WARNING</item>
+        <item>SUPPLY_LOW</item>
+        <item>SUPPLY_FULL</item>
+    </string-array>
+
+    <string-array name="sample_image_mode">
+        <item>スマートフォンのカメラ</item>
+        <item>作例を表示する</item>
+        <item>操作パネルを表示する</item>
+        <item>画像をためて表示</item>
+    </string-array>
+
+    <string-array name="sample_image_mode_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="exif_exposure_program_value">
+        <item>不明</item>
+        <item>マニュアル</item>
+        <item>プログラム</item>
+        <item>絞り優先</item>
+        <item>シャッター優先</item>
+        <item>クリエイティブ</item>
+        <item>アクション</item>
+        <item>ポートレイト</item>
+        <item>ランドスケープ</item>
+        <item>その他</item>
+    </string-array>
+
+    <string-array name="exif_metering_mode_value">
+        <item>不明</item>
+        <item>平均</item>
+        <item>中央重点</item>
+        <item>スポット</item>
+        <item>マルチスポット</item>
+        <item>分割測光</item>
+        <item>部分測光</item>
+        <item>その他</item>
+    </string-array>
+
+    <string-array name="array_select_effect_process">
+        <item>左右結合</item>
+        <item>上下結合</item>
+        <item>左右結合(リサイズ)</item>
+        <item>上下結合(リサイズ)</item>
+        <item>はめ込み合成</item>
+        <item>はめ込み合成(小)</item>
+    </string-array>
+
+    <string-array name="bracketing_type_name">
+        <item>撮影条件一定</item>
+        <item>露出ブラケット</item>
+        <item>絞りブラケット</item>
+        <item>ISOブラケット</item>
+        <item>シャッターブラケット</item>
+        <item>ホワイトバランスBKT</item>
+        <item>カラートーンBKT</item>
+    </string-array>
+
+    <string-array name="bracketing_type_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="bracketing_count_name">
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+        <item>7</item>
+        <item>9</item>
+        <item>11</item>
+        <item>13</item>
+        <item>15</item>
+        <item>17</item>
+        <item>19</item>
+        <item>21</item>
+        <item>23</item>
+        <item>25</item>
+        <item>27</item>
+        <item>29</item>
+        <item>31</item>
+        <item>35</item>
+        <item>39</item>
+        <item>43</item>
+        <item>47</item>
+        <item>51</item>
+        <item>55</item>
+        <item>61</item>
+        <item>65</item>
+        <item>69</item>
+        <item>71</item>
+        <item>75</item>
+        <item>79</item>
+        <item>81</item>
+        <item>85</item>
+        <item>89</item>
+        <item>91</item>
+        <item>95</item>
+        <item>99</item>
+        <item>101</item>
+    </string-array>
+
+    <string-array name="bracketing_count_value">
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+        <item>7</item>
+        <item>9</item>
+        <item>11</item>
+        <item>13</item>
+        <item>15</item>
+        <item>17</item>
+        <item>19</item>
+        <item>21</item>
+        <item>23</item>
+        <item>25</item>
+        <item>27</item>
+        <item>29</item>
+        <item>31</item>
+        <item>35</item>
+        <item>39</item>
+        <item>43</item>
+        <item>47</item>
+        <item>51</item>
+        <item>55</item>
+        <item>61</item>
+        <item>65</item>
+        <item>69</item>
+        <item>71</item>
+        <item>75</item>
+        <item>79</item>
+        <item>81</item>
+        <item>85</item>
+        <item>89</item>
+        <item>91</item>
+        <item>95</item>
+        <item>99</item>
+        <item>101</item>
+    </string-array>
+
+    <string-array name="bracketing_duration_name">
+        <item>0</item>
+        <item>2</item>
+        <item>5</item>
+        <item>7</item>
+        <item>10</item>
+        <item>12</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+        <item>150</item>
+        <item>180</item>
+    </string-array>
+
+    <string-array name="bracketing_duration_value">
+        <item>0</item>
+        <item>2</item>
+        <item>5</item>
+        <item>7</item>
+        <item>10</item>
+        <item>12</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+        <item>150</item>
+        <item>180</item>
+    </string-array>
+
+    <string-array name="digital_zoom_level">
+        <item >1.0</item>
+        <item >1.5</item>
+        <item >2.0</item>
+        <item >2.5</item>
+        <item >MAX</item>
+    </string-array>
+
+    <string-array name="digital_zoom_level_value">
+        <item >1.0</item>
+        <item >1.5</item>
+        <item >2.0</item>
+        <item >2.5</item>
+        <item >MAX</item>
+    </string-array>
+
+    <string-array name="magnifying_live_view_scale">
+        <item >段階切替(STEP)</item>
+        <item >5.0</item>
+        <item >7.0</item>
+        <item >10.0</item>
+        <item >14.0</item>
+    </string-array>
+
+    <string-array name="magnifying_live_view_scale_value">
+        <item >STEP</item>
+        <item >5.0</item>
+        <item >7.0</item>
+        <item >10.0</item>
+        <item >14.0</item>
+    </string-array>
+
+</resources>

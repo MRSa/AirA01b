@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compat="http://schemas.android.com/apk/res-auto" >
+
+    <item android:id="@+id/action_manipulate_image"
+        compat:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_report_image"
+        android:title="@string/effect_image_title"
+        android:checkable="false"
+        android:visible="true"
+        android:enabled="true">
+    </item>
+
+    <item android:id="@+id/action_image_share"
+        compat:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="@string/share_image_label"
+        android:checkable="false"
+        android:visible="false"
+        android:enabled="false">
+    </item>
+
+    <item android:id="@+id/action_manipulate_save_image"
+        compat:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/action_save_manipulate_image"
+        android:checkable="false"
+        android:visible="false"
+        android:enabled="true">
+    </item>
+
+</menu>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+
+    <!-- 表示領域全体(縦にならべる) -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <!-- 加工前画像の表示領域を示すラベル -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="@string/source_image_title"
+            android:textColor="@color/background_translucent_dark"
+            android:textSize="12sp"
+            />
+
+        <!-- 加工前画像を示すラベル -->
+        <LinearLayout
+            android:id="@+id/sourceImageLabelLayout"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_translucent_dark" >
+
+            <TextView
+                android:id="@+id/sourceImage1Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:visibility="visible"
+                android:text=""
+                android:textColor="@color/background_dark"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/sourceImage2Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:visibility="visible"
+                android:text=""
+                android:textColor="@color/background_dark"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- 加工前の画像を選択するためのボタン表示領域 -->
+        <LinearLayout
+            android:id="@+id/selectSourceImageButtonLayout"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_translucent_dark" >
+
+            <Button
+                android:id="@+id/selectSourceImage1Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="visible"
+                android:text="@string/select_source_image_label"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/selectImageSpacer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:visibility="invisible"
+                android:text="@string/blank"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/selectSourceImage2Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="visible"
+                android:text="@string/select_source_image_label"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- 加工前の画像の実表示領域 -->
+        <LinearLayout
+            android:id="@+id/sourceImageLayout"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_translucent_dark" >
+
+            <ImageView
+                android:id="@+id/sourceImageView1"
+                android:paddingLeft="2dp"
+                android:paddingStart="2dp"
+                android:paddingRight="2dp"
+                android:paddingEnd="2dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/source_image_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/sourceImageView2"
+                android:paddingLeft="2dp"
+                android:paddingStart="2dp"
+                android:paddingRight="2dp"
+                android:paddingEnd="2dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/source_image_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <!-- 加工後画像の表示領域を示すラベル -->
+        <TextView
+            android:id="@+id/targetImageTextLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="@string/destination_image_title"
+            android:textColor="@color/background_translucent_dark"
+            android:textSize="12sp"
+            />
+
+        <!-- 加工後画像を表示する領域 -->
+        <LinearLayout
+            android:id="@+id/targetImageViewLayout"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_translucent_dark" >
+
+            <ImageView
+                android:id="@+id/targetImageView"
+                android:paddingLeft="2dp"
+                android:paddingStart="2dp"
+                android:paddingRight="2dp"
+                android:paddingEnd="2dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:contentDescription="@string/destination_image_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

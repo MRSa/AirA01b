@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+
+    <LinearLayout
+        android:id="@+id/propertyInformationPanelLayout"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="14dp"
+        android:background="@color/background_translucent_dark" >
+
+        <TextView
+            android:id="@+id/propertyInformationMessageTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/blank"
+            android:textColor="@color/background_dark"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/propertyConfigPanelLayout"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="24dp"
+        android:background="@color/background_translucent_dark" >
+
+        <ImageView
+            android:id="@+id/propertySettings_save"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="invisible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/configuration"
+            android:src="@drawable/btn_ic_save" />
+
+        <ImageView
+            android:id="@+id/propertySettings_1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="invisible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/configuration"
+            android:src="@drawable/btn_ic_looks_1" />
+
+    <ImageView
+        android:id="@+id/propertySettings_2"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_gravity="end"
+        android:visibility="invisible"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="center"
+        android:contentDescription="@string/configuration"
+        android:src="@drawable/btn_ic_looks_2" />
+
+        <ImageView
+            android:id="@+id/propertySettings_3"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="invisible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/configuration"
+            android:src="@drawable/btn_ic_looks_3" />
+
+        <ImageView
+            android:id="@+id/propertySettings_4"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="invisible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/configuration"
+            android:src="@drawable/btn_ic_looks_4" />
+
+        <ImageView
+            android:id="@+id/propertySettings_5"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="invisible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/configuration"
+            android:src="@drawable/btn_ic_looks_5" />
+
+        <ImageView
+            android:id="@+id/propertySettings_upload"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="invisible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/configuration"
+            android:src="@drawable/btn_ic_file_upload" />
+
+        <ImageView
+            android:id="@+id/propertySettings_refresh"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="invisible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/configuration"
+            android:src="@drawable/btn_ic_refresh" />
+
+        <ImageView
+            android:id="@+id/property_settings_find"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="invisible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/configuration"
+            android:src="@drawable/btn_ic_find_in_page" />
+
+        <ImageView
+            android:id="@+id/propertySettings_restore"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:visibility="visible"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/restore"
+            android:src="@drawable/btn_ic_restore_page" />
+
+    </LinearLayout>
+
+    <ListView android:id="@+id/CameraPropertyListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+</LinearLayout>

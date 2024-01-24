@@ -1,0 +1,273 @@
+<resources>
+    <string name="app_name">AirA01b</string>
+    <string name="app_name2">AirA01a</string>
+    <string name="blank"> </string>
+    <string name="icon">アイコン</string>
+    <string name="sdk_version">SDK Version</string>
+    <string name="shutter">シャッター</string>
+    <string name="manual_focus">マニュアルフォーカス</string>
+    <string name="af_lock">フォーカスロック</string>
+    <string name="ae_lock">AEロック</string>
+    <string name="focus_assist">フォーカスアシスト</string>
+    <string name="show_grid">グリッドの表示</string>
+    <string name="exposure_settings">露出</string>
+    <string name="iso_settings">ISO</string>
+    <string name="filter">フィルター</string>
+    <string name="configuration">設定</string>
+    <string name="restore">リストア</string>
+    <string name="shutter_control_af_failed">AF失敗</string>
+    <string name="shoot_camera">撮影しました。</string>
+    <string name="action_delete_picture">画像の削除</string>
+    <string name="action_delete_movie">ファイルの削除</string>
+    <string name="favorite">お気に入り</string>
+    <string name="favorite_configuration">お気に入りカメラ設定</string>
+
+    <string name="dialog_title_connect_failed">カメラ接続失敗</string>
+    <string name="dialog_title_button_retry">再試行</string>
+    <string name="dialog_title_button_network_settings">WiFi設定</string>
+
+    <string name="connect_start">接続開始</string>
+    <string name="connect_check_wifi">Wifi準備中(OS待ち)</string>
+    <string name="connect_connect">接続開始</string>
+    <string name="connect_connected">接続完了！</string>
+    <string name="connect_change_run_mode">カメラ動作モード変更</string>
+    <string name="connect_restore_camera_settings">カメラ設定を展開</string>
+
+    <string name="pref_cat_take_picture">撮影設定</string>
+    <string name="pref_take_mode">撮影モード</string>
+    <string name="pref_ae_mode">AEモード</string>
+    <string name="pref_wb_mode">ホワイトバランス</string>
+
+    <string name="pref_cat_exposure_settings">露出設定</string>
+    <string name="pref_exposure_compensation">露出補正</string>
+    <string name="pref_shutter_speed">シャッター速度</string>
+    <string name="pref_aperture">露出</string>
+    <string name="pref_iso_sensitivity">ISO感度</string>
+
+    <string name="pref_cat_camera">カメラ</string>
+    <string name="pref_cat_phone_camera">内蔵カメラ</string>
+    <string name="pref_cat_live_view">ライブビュー設定</string>
+    <string name="pref_live_view_quality">ライブビュー品質</string>
+    <string name="pref_focus_grid_type">フォーカスグリッドタイプ</string>
+    <string name="pref_focus_assist_type">フォーカスアシストタイプ</string>
+    <string name="pref_camera_sound_volume">シャッター音</string>
+    <string name="pref_image_size">画像サイズ</string>
+    <string name="pref_take_raw">RAW記録</string>
+    <string name="pref_camera_rotation">画像の回転</string>
+    <string name="pref_phone_camera_id">Camera ID</string>
+    <string name="pref_only_camera">内蔵カメラで撮影をしない</string>
+    <string name="pref_level_gauge">デジタル水準器</string>
+
+    <string name="pref_effect">エフェクト</string>
+    <string name="pref_color_tone">カラートーン</string>
+    <string name="pref_recently_art_filter">アートフィルター</string>
+
+    <string name="pref_cat_info">カメラ情報</string>
+    <string name="pref_focal_length">焦点距離</string>
+    <string name="pref_lens_status">レンズ状態</string>
+    <string name="pref_media_status">SDカード状態</string>
+    <string name="pref_camera_version">Camera Version</string>
+    <string name="pref_camerakit_version">Camera kit Version</string>
+
+    <string name="pref_cat_application_control">アプリ制御</string>
+    <string name="pref_playback_camera">画像確認(カメラ)</string>
+    <string name="pref_playback_phone">画像確認(ギャラリー)</string>
+    <string name="pref_power_off">カメラ電源OFF</string>
+    <string name="pref_exit_power_off">カメラOFFとアプリ終了</string>
+
+    <string name="pref_cat_lower_panel">画面下部の表示内容</string>
+    <string name="pref_lower_panel_feature">画面下部の表示</string>
+    <string name="pref_cat_show_sample">作例表示</string>
+    <string name="pref_show_sample_image">作例表示モード</string>
+    <string name="pref_select_sample_image">作例の選択</string>
+    <string name="pref_show_sample_image_0">スマートフォンのカメラ</string>
+    <string name="pref_show_sample_image_1">作例を表示する</string>
+    <string name="pref_show_sample_image_2">操作パネルを表示する</string>
+    <string name="pref_show_sample_image_3">画像をためて表示(タイムシフト)</string>
+
+    <string name="pref_lower_control_sensitivity">操作パネルのフリック感度</string>
+    <string name="pref_synchronize_datetime">カメラの時刻を更新(同期)</string>
+    <string name="action_synchroize_datetime">カメラの時刻を更新(同期)</string>
+    <string name="confirm_synchronize_datetime">カメラの時刻を更新(同期)します。よろしいですか？</string>
+
+    <string name="pref_live_view_magnify">ライブビュー拡大倍率</string>
+    <string name="pref_capture_both_camera_and_live_view">ライブビューを同時保存</string>
+    <string name="pref_share_live_view_image">ライブビュー画像を共有</string>
+
+    <string name="pref_cat_bracketing">インターバル撮影</string>
+    <string name="pref_use_bracketing">インターバル撮影をする</string>
+    <string name="pref_bracketing_type">撮影タイプ</string>
+    <string name="pref_bracketing_count">撮影枚数</string>
+    <string name="pref_bracketing_duration">撮影間隔(秒)</string>
+
+    <string name="pref_cat_others">その他</string>
+    <string name="pref_custom_splash">起動時の画像を変更する</string>
+    <string name="pref_select_splash_image">起動時の画像を選択</string>
+    <string name="pref_call_share_after_save">画像保存後に共有呼出</string>
+    <string name="pref_manipulate_image">画像の加工</string>
+    <string name="pref_opencv_version">OpenCV Version</string>
+    <string name="pref_cat_gokigen">GOKIGEN Project</string>
+    <string name="pref_instruction_manual">AirA01b 操作説明</string>
+    <string name="pref_privacy_policy">プライバシーポリシー</string>
+
+    <string name="dialog_title_confirmation">確認</string>
+    <string name="dialog_positive_power_off">OK</string>
+    <string name="dialog_positive_execute">実行</string>
+    <string name="dialog_negative_cancel">Cancel</string>
+    <string name="dialog_message_disconnect">カメラを切断します。</string>
+    <string name="dialog_message_power_off">カメラの電源を切り、アプリケーションを終了します。</string>
+    <string name="dialog_message_exit_application">アプリケーションを終了します。</string>
+    <string name="dialog_positive_exit_application">実行</string>
+
+    <string name="dialog_title_loading_properties">カメラプロパティ読出中</string>
+    <string name="dialog_message_loading_properties">しばらくお待ち下さい…</string>
+
+    <string name="dialog_message_restore_camera_property">カメラプロパティを画面オープン時の状態に戻します。</string>
+    <string name="dialog_positive_restore_property">実行</string>
+
+    <string name="dialog_download_title">画像取得</string>
+    <string name="dialog_download_file_title">ファイル取得</string>
+    <string name="dialog_download_movie_title">動画取得</string>
+    <string name="dialog_download_raw_title">RAWファイル取得</string>
+    <string name="dialog_download_message">ファイル名:</string>
+    <string name="dialog_get_information_title">画像情報取得中</string>
+    <string name="download_control_download_failed">ダウンロード失敗</string>
+    <string name="download_control_save_failed">保存失敗</string>
+    <string name="download_control_get_information_failed">情報取得失敗</string>
+    <string name="download_control_get_information_title">情報</string>
+    <string name="download_control_save_success">保存成功</string>
+    <string name="exif_datetime_title">撮影日時 :</string>
+    <string name="exif_exposure_time_title">シャッタースピード :</string>
+    <string name="exif_aperture_title">絞り値 : </string>
+    <string name="exif_focal_length_title">焦点距離 :</string>
+    <string name="exif_focal_35mm_equiv_title">換算</string>
+    <string name="exif_iso_title">ISO : </string>
+    <string name="exif_maker_title">メーカー :</string>
+    <string name="exif_camera_title">モデル :</string>
+    <string name="exif_camera_mode_title">撮影モード :</string>
+    <string name="exif_metering_mode_title">測光モード :</string>
+    <string name="exif_custom_process_title">(スペシャル・エフェクト使用)</string>
+    <string name="exif_with_gps">(位置情報あり)</string>
+
+    <string name="action_info">情報</string>
+    <string name="action_refreash">更新</string>
+    <string name="action_download">ダウンロード</string>
+    <string name="action_download_movie">ダウンロード</string>
+    <string name="action_download_original_movie">動画の取得</string>
+    <string name="action_get_information">画像情報</string>
+    <string name="action_download_original_size">オリジナルサイズ</string>
+    <string name="action_download_2048x1536">2048 x 1536</string>
+    <string name="action_download_1920x1440">1920 x 1440</string>
+    <string name="action_download_1600x1200">1600 x 1200</string>
+    <string name="action_download_1024x768">1024 x 768</string>
+    <string name="action_download_raw">RAW</string>
+    <string name="action_download_with_raw">RAWも取得</string>
+
+    <string name="auto_save_props">(自動保存)</string>
+    <string name="title_tab_title_load">設定反映</string>
+    <string name="title_tab_title_save">設定保存</string>
+    <string name="title_my_settings">お気に入りカメラ設定</string>
+    <string name="saved_my_props">設定を保存しました。 : </string>
+    <string name="save_props">保存</string>
+    <string name="hint_save_props">ラベル</string>
+
+    <string name="media_busy">記録中</string>
+    <string name="media_error">カード</string>
+    <string name="high_temperature_warning">温度</string>
+    <string name="exposure_metering_warning">露出</string>
+    <string name="iso_sensitivity_warning">露出(ISO)</string>
+    <string name="fatal_cannot_use_camera">Olympus Camera Kitが動作しないモードのため、カメラのリセットが必要です。電源ボタンを8秒以上長押しして、カメラをリセットしてください。</string>
+    <string name="camera_reset_required">カメラ側のリセット操作をお願いします。</string>
+    <string name="restored_my_props">設定を展開しました。 :  </string>
+    <string name="dialog_start_load_property_message">しばらくお待ち下さい&#8230;</string>
+    <string name="dialog_start_save_property_message">しばらくお待ち下さい&#8230;</string>
+    <string name="dialog_start_save_property_title">カメラプロパティ保存中</string>
+    <string name="dialog_start_load_property_title">カメラプロパティ設定中</string>
+
+    <string name="data_loading">読み込み中&#8230;</string>
+    <string name="cannot_load_bitmap">画像読み込み失敗&#8230; </string>
+
+    <string name="minus_image_label">-</string>
+    <string name="plus_image_label">+</string>
+
+    <string name="share_chooser_title">画像の共有</string>
+    <string name="source_image_1">加工画像 1</string>
+    <string name="source_image_2">加工画像 2</string>
+    <string name="source_image_title">加工対象</string>
+    <string name="select_source_image_label">画像を選択&#8230;</string>
+    <string name="effect_image_title">加工内容</string>
+    <string name="select_effect_image_label">Select&#8230;</string>
+    <string name="destination_image_title">プレビュー</string>
+    <string name="save_image_label">保存</string>
+    <string name="share_image_label">共有&#8230;</string>
+    <string name="save_button_label_index">保存</string>
+    <string name="data_saving">保存中&#8230;</string>
+    <string name="effected_save_image_failure">画像保存に失敗しました。</string>
+    <string name="effected_save_image_success">画像を保存しました。</string>
+    <string name="image_save_first">先に画像を保存してください。</string>
+    <string name="share_image_failed">画像の共有に失敗しました。</string>
+
+    <string name="live_view_magnify">LV拡大</string>
+    <string name="gps">GPS</string>
+    <string name="action_save_manipulate_image">画像の保存</string>
+
+    <string name="dialog_title_select_image_effect">種別の選択</string>
+    <string name="warning_please_select_both_image">ファイルを２つとも選択してください。</string>
+    <string name="effect_process_failure">画像加工に失敗しました。</string>
+    <string name="warning_picture_size_exceeded">画像加工後のサイズが大きすぎます。</string>
+    <string name="video_recording">&#9679;REC</string>
+    <string name="video_failure">失敗です&#8230;</string>
+    <string name="taking_picture">撮影中</string>
+    <string name="notify_sequential">OK!</string>
+
+    <string name="ble_setting_is_off">BluetoothがOFFです</string>
+    <string name="launch_fail_via_ble">Bluetooth経由のカメラ起動に失敗 : </string>
+
+    <string name="pref_cat_initialize">起動時設定</string>
+    <string name="pref_bluetooth_power_on">BluetoothでカメラON</string>
+    <string name="pref_summary_bluetooth_power_on">起動時BluetoothでカメラをONにします。</string>
+
+    <string name="hint_save_bt_name">名前</string>
+    <string name="hint_save_bt_passcode">パスコード</string>
+    <string name="pref_air_bt">カメラBluetooth設定</string>
+    <string name="pref_summary_air_bt">Olympus AIRのBluetooth設定を登録します。</string>
+    <string name="saved_my_camera">登録しました : </string>
+
+    <string name="pref_use_playback_menu">画像一覧でメニューを表示</string>
+
+    <string name="action_select_all">すべて選択/選択解除</string>
+    <string name="action_refresh">更新</string>
+    <string name="finish_refresh">更新終了</string>
+
+    <string name="dialog_confirm_title_output_log">ログの共有</string>
+    <string name="dialog_confirm_message_output_log">ログを共有します。よろしいですか？</string>
+
+    <string name="button">ボタン</string>
+    <string name="select_radio_date">日付</string>
+    <string name="select_radio_path">パス</string>
+    <string name="dialog_title_batch_download">一括ダウンロード(サイズ選択)</string>
+    <string name="dialog_positive_download">Download</string>
+    <string name="dialog_label_batch_download">選択画像数 :   </string>
+    <string name="dialog_label_select_size"> </string>
+
+    <string name="message_download_finished_pics">完了しました。 ファイル数 : </string>
+    <string name="message_download_finished_pics_with_failure">取得が完了しました。 ファイル数 : </string>
+    <string name="message_download_failure_count"> 失敗数 : </string>
+    <string name="message_download_finished_but_failed">取得に失敗しました。 </string>
+
+    <string name="pref_number_of_cache_pictures">ライブビュー画像の保管最大数</string>
+    <string name="pref_summary_number_of_cache_pictures">ライブビュー画像をバッファリングする最大枚数を指定します。(初期値:500、再起動後に有効)</string>
+
+    <string name="dialog_title_batch_delete">一括削除の確認</string>
+    <string name="comfirm_batch_delete_message">  選択したファイルを削除します。</string>
+    <string name="action_delete_with_raw">RAWファイルも削除</string>
+    <string name="action_delete_only_raw">RAWファイルだけ削除</string>
+    <string name="dialog_label_batch_delete">削除画像数 :   </string>
+    <string name="dialog_positive_delete">ファイル削除</string>
+
+    <string name="dialog_delete_title">画像ファイル削除中</string>
+    <string name="dialog_delete_message">指定した画像ファイルを削除中です。しばらくお待ちください。</string>
+
+    <string name="action_delete">画像の削除</string>
+
+</resources>
