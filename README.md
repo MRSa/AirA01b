@@ -18,8 +18,13 @@ AirA01b は、デジタルカメラ OLYMPUS AIR A01 にWi-Fi/Bluetooth経由で�
 
 ## OlympusCameraKitについて
 
-AirA01a は、OlympusCameraKit を使用してOLYMPUS AIR A01と通信を行います。そのため、以下の「SDKダウンロード許諾契約書」の条件に従います。
+AirA01b は、OlympusCameraKit を使用してOLYMPUS AIR A01と通信を行います。そのため、以下の「SDKダウンロード許諾契約書」の条件に従います。
 
 - [EULA_OlympusCameraKit_ForDevelopers_jp.pdf](https://github.com/MRSa/gokigen/blob/5ec908fdbe16c4de9e37fe90d70edc9352b6f948/osdn-svn/Documentations/miscellaneous/EULA_OlympusCameraKit_ForDevelopers_jp.pdf)
+
+## OpenCVについて
+
+AirA01b は、フォーカスアシスト機能を実現するために、[OpenCV](https://opencv.org/)を使用しています。そのため、[OpenCVのライセンス](https://opencv.org/license/)の条件に従います。
+(使用しているOpenCVのバージョンは 3 であるため、[3-clause BSD License](https://github.com/opencv/opencv/blob/4.4.0/LICENSE)が適用されます。)
 
 -----------
