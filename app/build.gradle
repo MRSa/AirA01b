@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 34
+    compileSdk 35
     defaultConfig {
         applicationId "jp.osdn.gokigen.aira01b"
         minSdkVersion 14
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 51
         versionName "1.12.5"
         multiDexEnabled true
