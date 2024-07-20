@@ -1,624 +1,726 @@
-package jp.osdn.gokigen.aira01b;
+package jp.osdn.gokigen.aira01b
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.provider.MediaStore;
-import android.provider.Settings;
-import android.Manifest.permission;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.WindowManager;
-
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.LoaderCallbackInterface;
-
-import java.util.List;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.preference.PreferenceManager;
-import jp.osdn.gokigen.aira01b.liveview.LiveViewFragment;
-import jp.osdn.gokigen.aira01b.logcat.LogCatFragment;
-import jp.osdn.gokigen.aira01b.manipulate.ManipulateImageFragment;
-import jp.osdn.gokigen.aira01b.olycameraproperty.OlyCameraPropertyListFragment;
-import jp.osdn.gokigen.aira01b.olycamerawrapper.ICameraStatusReceiver;
-import jp.osdn.gokigen.aira01b.olycamerawrapper.IOLYCameraObjectProvider;
-import jp.osdn.gokigen.aira01b.olycamerawrapper.IOlyCameraCoordinator;
-import jp.osdn.gokigen.aira01b.olycamerawrapper.OlyCameraCoordinator;
-import jp.osdn.gokigen.aira01b.olycamerawrapper.ble.ICameraPowerOn;
-import jp.osdn.gokigen.aira01b.playback.ImageGridViewFragment;
-import jp.osdn.gokigen.aira01b.preference.ICameraPropertyAccessor;
-import jp.osdn.gokigen.aira01b.preference.PreferenceFragment;
+import android.Manifest.permission
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Bundle
+import android.provider.MediaStore
+import android.provider.Settings
+import android.util.Log
+import android.view.KeyEvent
+import android.view.WindowManager
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
+import jp.osdn.gokigen.aira01b.liveview.LiveViewFragment
+import jp.osdn.gokigen.aira01b.logcat.LogCatFragment
+import jp.osdn.gokigen.aira01b.manipulate.ManipulateImageFragment
+import jp.osdn.gokigen.aira01b.olycameraproperty.OlyCameraPropertyListFragment
+import jp.osdn.gokigen.aira01b.olycamerawrapper.ICameraStatusReceiver
+import jp.osdn.gokigen.aira01b.olycamerawrapper.IOLYCameraObjectProvider
+import jp.osdn.gokigen.aira01b.olycamerawrapper.IOlyCameraCoordinator
+import jp.osdn.gokigen.aira01b.olycamerawrapper.OlyCameraCoordinator
+import jp.osdn.gokigen.aira01b.olycamerawrapper.ble.ICameraPowerOn.PowerOnCameraCallback
+import jp.osdn.gokigen.aira01b.playback.ImageGridViewFragment
+import jp.osdn.gokigen.aira01b.preference.ICameraPropertyAccessor
+import jp.osdn.gokigen.aira01b.preference.PreferenceFragment
+import org.opencv.android.BaseLoaderCallback
+import org.opencv.android.LoaderCallbackInterface
 
 /**
  *
  *
  */
-public class MainActivity extends AppCompatActivity implements ICameraStatusReceiver, IChangeScene, ICameraPowerOn.PowerOnCameraCallback
+class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, PowerOnCameraCallback
 {
-    /////// OpenCV ///////
-    static
+    private lateinit var olyCameraCoordinator: IOlyCameraCoordinator
+    private lateinit var interfaceFactory: MyInterfaceProvider
+    private lateinit var olyCameraObjectProvider: IOLYCameraObjectProvider
+    private lateinit var liveViewFragment: LiveViewFragment
+    private lateinit var logCatFragment: LogCatFragment
+
+    private val mLoaderCallback: BaseLoaderCallback = object : BaseLoaderCallback(this)
     {
-        System.loadLibrary("opencv_java3");
-    }
-    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this)
-    {
-        @Override
-        public void onManagerConnected(int status)
+        override fun onManagerConnected(status: Int)
         {
-            switch (status)
+            when (status)
             {
-                case LoaderCallbackInterface.SUCCESS:
-                {
-                    Log.i(TAG, "OpenCV loaded successfully");
-                } break;
-                default:
-                {
-                    super.onManagerConnected(status);
-                } break;
+                SUCCESS -> {
+                    Log.i(TAG, "OpenCV loaded successfully")
+                }
+                else -> {
+                    super.onManagerConnected(status)
+                }
             }
         }
-    };
-
-    private final String TAG = this.toString();
-    static final int REQUEST_NEED_PERMISSIONS = 1010;
-    //static final int REQUEST_NEED_GPS_PERMISSIONS = 1011;
-
-    private IOlyCameraCoordinator olyCameraCoordinator = null;
-    private IOLYCameraObjectProvider olyCameraObjectProvider = null;
-    private MyInterfaceProvider interfaceFactory = null;
-
-    private LiveViewFragment liveViewFragment = null;
-    private LogCatFragment logCatFragment = null;
+    }
 
     /**
      *
      *
      */
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?)
     {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState)
 
         // 画面全体レイアウトの設定
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main)
 
-        ActionBar bar = getSupportActionBar();
-        if (bar != null)
-        {
-            // タイトルバーは表示しない
-            bar.hide();
-        }
+        val bar = supportActionBar
+        bar?.hide()
         try
         {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
+            e.printStackTrace()
         }
 
-        interfaceFactory = new MyInterfaceProvider(this, this, this);
-        OlyCameraCoordinator coordinator = new OlyCameraCoordinator(this, interfaceFactory);
-        olyCameraCoordinator = coordinator;
-        olyCameraObjectProvider = coordinator;
-        interfaceFactory.setPropertyProvider(olyCameraCoordinator.getCameraPropertyProvider());
-
-        if ((ContextCompat.checkSelfPermission(this, permission.CAMERA) != PackageManager.PERMISSION_GRANTED) ||
-                (ContextCompat.checkSelfPermission(this, permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)||
-                (ContextCompat.checkSelfPermission(this, permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) ||
-                (ContextCompat.checkSelfPermission(this, permission.ACCESS_MEDIA_LOCATION) != PackageManager.PERMISSION_GRANTED) ||
-                (ContextCompat.checkSelfPermission(this, permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED)||
-                (ContextCompat.checkSelfPermission(this, permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED)||
-                (ContextCompat.checkSelfPermission(this, permission.VIBRATE) != PackageManager.PERMISSION_GRANTED) ||
-                (ContextCompat.checkSelfPermission(this, permission.INTERNET) != PackageManager.PERMISSION_GRANTED)||
-                (ContextCompat.checkSelfPermission(this, permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) ||
-                (ContextCompat.checkSelfPermission(this, permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) ||
-                (ContextCompat.checkSelfPermission(this, permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) ||
-                (ContextCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED))
-        {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{
-                            permission.CAMERA,
-                            permission.WRITE_EXTERNAL_STORAGE,
-                            permission.ACCESS_NETWORK_STATE,
-                            permission.ACCESS_WIFI_STATE,
-                            permission.VIBRATE,
-                            permission.INTERNET,
-                            permission.BLUETOOTH,
-                            permission.BLUETOOTH_ADMIN,
-                            permission.ACCESS_COARSE_LOCATION,
-                            permission.ACCESS_FINE_LOCATION,
-                            permission.READ_EXTERNAL_STORAGE,
-                            permission.ACCESS_MEDIA_LOCATION,
-                    },
-                    REQUEST_NEED_PERMISSIONS);
-        }
-
-        // ConnectingFragmentを表示する
-        changeViewToConnectingFragment();
-    }
-
-    /**
-     *
-     */
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
-        if (isBlePowerOn())
-        {
-            // Bluetooth Smart経由でカメラをONにする場合...
-            try
-            {
-                // カメラの電源ONクラスを呼び出しておく (電源ONができたら、コールバックをもらう）
-                olyCameraCoordinator.wakeup(this);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-        else
-        {
-            // BLE経由でONしない時は、Wifiの状況を確認に入る。
-            if (olyCameraCoordinator != null)
-            {
-                olyCameraCoordinator.startWatchWifiStatus(this);
-            }
-        }
-
-        Log.d(TAG, "OpenCV library found inside package. Using it!");
-        if (mLoaderCallback != null)
-        {
-            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
-        }
-    }
-
-    /**
-     *
-     */
-    @Override
-    protected void onPause()
-    {
-        super.onPause();
-        if (olyCameraCoordinator != null)
-        {
-            olyCameraCoordinator.stopWatchWifiStatus(this);
-        }
-    }
-
-    /**
-     *
-     *
-     */
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-    }
-
-    /**
-     *
-     *
-     */
-    @Override
-    public void onStop()
-    {
-        super.onStop();
-    }
-
-
-    @Override
-    public void onStatusNotify(final String message)
-    {
-        Log.v(TAG, "onStatusNotify() : " + message);
         try
         {
-            List<Fragment> fragments = getSupportFragmentManager().getFragments();
-            for (Fragment f : fragments)
+            interfaceFactory = MyInterfaceProvider(this, this, this)
+            val coordinator = OlyCameraCoordinator(this, interfaceFactory)
+            olyCameraCoordinator = coordinator
+            olyCameraObjectProvider = coordinator
+            interfaceFactory.propertyProvider = olyCameraCoordinator.getCameraPropertyProvider()
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
+
+        try
+        {
+            ///////// SET PERMISSIONS /////////
+            Log.v(TAG, " ----- SET PERMISSIONS -----")
+            if (!allPermissionsGranted())
             {
-                if ((f != null)&&(f.getClass().toString().contains("ConnectingFragment")))
-                {
-                    final ConnectingFragment target = (ConnectingFragment) f;
-                    runOnUiThread(new Runnable()
+                val requestPermission = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+
+                    ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_NEED_PERMISSIONS)
+                    if(!allPermissionsGranted())
                     {
-                        @Override
-                        public void run()
-                        {
-                            target.setInformationText(message);
-                        }
-                    });
-                    return;
+                        // Abort launch application because required permissions was rejected.
+                        Toast.makeText(this, getString(R.string.permission_not_granted), Toast.LENGTH_SHORT).show()
+                        Log.v(TAG, "----- APPLICATION LAUNCH ABORTED -----")
+                        finish()
+                    }
+                }
+                requestPermission.launch(REQUIRED_PERMISSIONS)
+            }
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
+
+/*
+        if ((ContextCompat.checkSelfPermission(
+                this,
+                permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.ACCESS_MEDIA_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.ACCESS_NETWORK_STATE
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.ACCESS_WIFI_STATE
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.VIBRATE
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.INTERNET
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.BLUETOOTH
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.BLUETOOTH_ADMIN
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED) ||
+            (ContextCompat.checkSelfPermission(
+                this,
+                permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED)
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    permission.CAMERA,
+                    permission.WRITE_EXTERNAL_STORAGE,
+                    permission.ACCESS_NETWORK_STATE,
+                    permission.ACCESS_WIFI_STATE,
+                    permission.VIBRATE,
+                    permission.INTERNET,
+                    permission.BLUETOOTH,
+                    permission.BLUETOOTH_ADMIN,
+                    permission.ACCESS_COARSE_LOCATION,
+                    permission.ACCESS_FINE_LOCATION,
+                    permission.READ_EXTERNAL_STORAGE,
+                    permission.ACCESS_MEDIA_LOCATION,
+                ),
+                REQUEST_NEED_PERMISSIONS
+            )
+        }
+*/
+        // ConnectingFragmentを表示する
+        changeViewToConnectingFragment()
+    }
+
+    private fun allPermissionsGranted() : Boolean
+    {
+        var result = true
+        for (param in REQUIRED_PERMISSIONS)
+        {
+            if (ContextCompat.checkSelfPermission(
+                    baseContext,
+                    param
+                ) != PackageManager.PERMISSION_GRANTED
+            )
+            {
+                // ----- Permission Denied...
+                if ((param == permission.ACCESS_MEDIA_LOCATION)&&(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q))
+                {
+                    //　この場合は権限付与の判断を除外 (デバイスが (10) よりも古く、ACCESS_MEDIA_LOCATION がない場合）
+                }
+                else if ((param == permission.READ_EXTERNAL_STORAGE)&&(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU))
+                {
+                    // この場合は、権限付与の判断を除外 (SDK: 33以上はエラーになる...)
+                }
+                else if ((param == permission.WRITE_EXTERNAL_STORAGE)&&(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU))
+                {
+                    // この場合は、権限付与の判断を除外 (SDK: 33以上はエラーになる...)
+                }
+                else if ((param == permission.BLUETOOTH_SCAN)&&(Build.VERSION.SDK_INT < Build.VERSION_CODES.S))
+                {
+                    // この場合は、権限付与の判断を除外 (SDK: 31よりも下はエラーになるはず...)
+                    Log.v(TAG, "BLUETOOTH_SCAN")
+                }
+                else if ((param == permission.BLUETOOTH_CONNECT)&&(Build.VERSION.SDK_INT < Build.VERSION_CODES.S))
+                {
+                    // この場合は、権限付与の判断を除外 (SDK: 31よりも下はエラーになるはず...)
+                    Log.v(TAG, "BLUETOOTH_CONNECT")
+                }
+                else
+                {
+                    // ----- 権限が得られなかった場合...
+                    Log.v(TAG, " Permission: $param : ${Build.VERSION.SDK_INT}")
+                    result = false
                 }
             }
         }
-        catch (Exception e)
+        return (result)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Log.v(TAG, "------------------------- onRequestPermissionsResult() ")
+        if (requestCode == REQUEST_NEED_PERMISSIONS)
         {
-            e.printStackTrace();
+            if (allPermissionsGranted())
+            {
+                // ----- 権限が有効だった、最初の画面を開く
+                Log.v(TAG, "onRequestPermissionsResult()")
+                // ConnectingFragmentを表示する
+                changeViewToConnectingFragment()
+            }
+            else
+            {
+                Log.v(TAG, "----- onRequestPermissionsResult() : false")
+                Toast.makeText(this, getString(R.string.permission_not_granted), Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
     }
 
-    @Override
-    public void onCameraConnected()
+    override fun onResume()
     {
-        Log.v(TAG, "onCameraConnected()");
-        if ((olyCameraCoordinator != null)&&(olyCameraCoordinator.isWatchWifiStatus()))
+        super.onResume()
+        try
         {
-            runOnUiThread(new Runnable()
+            if (isBlePowerOn)
             {
-                @Override
-                public void run()
+                // Bluetooth Smart経由でカメラをONにする場合...
+                try
                 {
-                    changeViewToLiveViewFragment();
+                    // カメラの電源ONクラスを呼び出しておく (電源ONができたら、コールバックをもらう）
+                    olyCameraCoordinator.wakeup(this)
                 }
-            });
+                catch (e: Exception)
+                {
+                    e.printStackTrace()
+                }
+            }
+            else
+            {
+                // BLE経由でONしない時は、Wifiの状況を確認に入る。
+                olyCameraCoordinator.startWatchWifiStatus(this)
+            }
+            Log.d(TAG, "OpenCV library found inside package. Using it!")
+            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS)
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
         }
     }
 
     /**
-     *    カメラとの接続が切れた時 ... ConnectingFragmentに切り替える
-     *   (CameraCoordinator.ICameraCallback の実装)
      *
      */
-    @Override
-    public void onCameraDisconnected()
+    override fun onPause()
     {
-        Log.v(TAG, "onCameraDisconnected()");
-        if ((olyCameraCoordinator != null)&&(olyCameraCoordinator.isWatchWifiStatus()))
+        super.onPause()
+        try
         {
-            runOnUiThread(new Runnable()
+            olyCameraCoordinator.stopWatchWifiStatus(this)
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
+     }
+
+    public override fun onStart() { super.onStart() }
+
+    public override fun onStop() { super.onStop() }
+
+    override fun onStatusNotify(message: String)
+    {
+        Log.v(TAG, "onStatusNotify() : $message")
+        try
+        {
+            val fragments = supportFragmentManager.fragments
+            for (f in fragments)
             {
-                @Override
-                public void run()
+                if ((f != null) && (f.javaClass.toString().contains("ConnectingFragment")))
                 {
-                    changeViewToConnectingFragment();
+                    val target = f as ConnectingFragment
+                    runOnUiThread { target.setInformationText(message) }
+                    return
                 }
-            });
+            }
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onCameraConnected()
+    {
+        Log.v(TAG, "onCameraConnected()")
+        try
+        {
+            if (olyCameraCoordinator.isWatchWifiStatus)
+            {
+                runOnUiThread { changeViewToLiveViewFragment() }
+            }
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
         }
     }
 
     /**
-     *    カメラとの接続エラーが発生した時 ... ConnectingFragmentに切り替える
-     *   (CameraCoordinator.ICameraCallback の実装)
+     * カメラとの接続が切れた時 ... ConnectingFragmentに切り替える
+     * (CameraCoordinator.ICameraCallback の実装)
+     *
+     */
+    override fun onCameraDisconnected()
+    {
+        Log.v(TAG, "onCameraDisconnected()")
+        try
+        {
+            if (olyCameraCoordinator.isWatchWifiStatus)
+            {
+                runOnUiThread { changeViewToConnectingFragment() }
+            }
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
+    }
+
+    /**
+     * カメラとの接続エラーが発生した時 ... ConnectingFragmentに切り替える
+     * (CameraCoordinator.ICameraCallback の実装)
      *
      * @param message メッセージ
      * @param e  例外
      */
-    public void onCameraOccursException(String message, Exception e)
+    override fun onCameraOccursException(message: String, e: Exception)
     {
-        Log.v(TAG, "onCameraOccursException()");
-        alertConnectingFailed(message, e);
-        onCameraDisconnected();
-    }
-
-    /*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.v(TAG, "MainActivity::onActivityResult() : " + requestCode);
-        if ((requestCode == ICameraPropertyAccessor.CHOICE_SPLASH_SCREEN)&&(resultCode == RESULT_OK)&&(data != null))
+        Log.v(TAG, "onCameraOccursException()")
+        try
         {
-            Uri selectedImage = data.getData();
-            Log.v(TAG, "Splash Image File : " + selectedImage.toString());
-            //setSplashScreenImageFile(selectedImage);
+            alertConnectingFailed(message, e)
+            onCameraDisconnected()
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
         }
     }
-    */
 
     /**
-     *   接続リトライのダイアログを出す
+     * 接続リトライのダイアログを出す
      *
      * @param message 表示用の追加メッセージ
      * @param e 例外
      */
-    private void alertConnectingFailed(String message, Exception e)
+    private fun alertConnectingFailed(message: String, e: Exception)
     {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.dialog_title_connect_failed))
-                .setMessage(e.getMessage() != null ? "<" + message + "> " + e.getMessage() : message + " : Unknown error")
-                .setPositiveButton(getString(R.string.dialog_title_button_retry), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        olyCameraCoordinator.connect();
-                    }
-                })
-                .setNeutralButton(R.string.dialog_title_button_network_settings, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        try
-                        {
-                            // Wifi 設定画面を表示する
-                            startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                        }
-                        catch (android.content.ActivityNotFoundException ex)
-                        {
-                            // Activity が存在しなかった...設定画面が起動できなかった
-                            Log.v(TAG, "android.content.ActivityNotFoundException...");
+        val builder = AlertDialog.Builder(this)
+            .setTitle(getString(R.string.dialog_title_connect_failed))
+            .setMessage(if (e.message != null) "<" + message + "> " + e.message else "$message : Unknown error")
+            .setPositiveButton(
+                getString(R.string.dialog_title_button_retry)
+            ) { _, _ -> olyCameraCoordinator.connect() }
+            .setNeutralButton(
+                R.string.dialog_title_button_network_settings
+            ) { _, _ ->
+                try
+                {
+                    // Wifi 設定画面を表示する
+                    startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
+                }
+                catch (ex: ActivityNotFoundException)
+                {
+                    // Activity が存在しなかった...設定画面が起動できなかった
+                    Log.v(TAG, "android.content.ActivityNotFoundException...")
 
-                            // この場合は、再試行と等価な動きとする
-                            olyCameraCoordinator.connect();
-                        }
-                        catch (Exception e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-        runOnUiThread(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                builder.show();
+                    // この場合は、再試行と等価な動きとする
+                    olyCameraCoordinator.connect()
+                }
+                catch (e: Exception)
+                {
+                    e.printStackTrace()
+                }
             }
-        });
+        runOnUiThread { builder.show() }
     }
 
     /**
-     *   ConnectingFragmentに表示を切り替える実処理
+     * ConnectingFragmentに表示を切り替える実処理
      */
-    private void changeViewToConnectingFragment()
+    private fun changeViewToConnectingFragment()
     {
         try
         {
-            ConnectingFragment fragment = new ConnectingFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment1, fragment);
-            transaction.commitAllowingStateLoss();
+            val fragment = ConnectingFragment()
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment1, fragment)
+            transaction.commitAllowingStateLoss()
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     *   LiveViewFragmentに表示を切り替える実処理
-     */
-    private void changeViewToLiveViewFragment()
-    {
-        // Activityが再生成されない限りは使いまわすよ。
-        //LiveViewFragment liveViewFragment = null;
-        if (liveViewFragment == null)
-        {
-            liveViewFragment = new LiveViewFragment();
-        }
-        else
-        {
-            Log.v(TAG, "changeViewToLiveViewFragment() : cancelled");
-            return;
-        }
-        try
-        {
-            liveViewFragment.setInterfaces(olyCameraCoordinator, interfaceFactory);
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment1, liveViewFragment);
-            transaction.commitAllowingStateLoss();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
 
     /**
-     *   OlyCameraPropertyListFragmentに表示を切り替える実処理
+     * LiveViewFragmentに表示を切り替える実処理
      */
-    private void changeViewToOlyCameraPropertyListFragment()
+    private fun changeViewToLiveViewFragment()
     {
         try
         {
-            OlyCameraPropertyListFragment fragment = new OlyCameraPropertyListFragment();
-            fragment.setInterface(this, interfaceFactory.getPropertyProvider());
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment1, fragment);
+            // Activityが再生成されない限りは使いまわす
+            if (!::liveViewFragment.isInitialized)
+            {
+                liveViewFragment = LiveViewFragment()
+            }
+            else
+            {
+                Log.v(TAG, "changeViewToLiveViewFragment() : cancelled")
+                return
+            }
+            liveViewFragment.setInterfaces(olyCameraCoordinator, interfaceFactory)
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment1, liveViewFragment)
+            transaction.commitAllowingStateLoss()
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
+    }
+
+    /**
+     * OlyCameraPropertyListFragmentに表示を切り替える実処理
+     */
+    private fun changeViewToOlyCameraPropertyListFragment()
+    {
+        try
+        {
+            val fragment = OlyCameraPropertyListFragment()
+            fragment.setInterface(this, interfaceFactory.propertyProvider)
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment1, fragment)
             // backstackに追加
-            transaction.addToBackStack(null);
-            transaction.commit();
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
 
     /**
-     *   PreferenceFragmentに表示を切り替える実処理
+     * PreferenceFragmentに表示を切り替える実処理
      */
-    private void changeViewToPreferenceFragment()
+    private fun changeViewToPreferenceFragment()
     {
         try
         {
-            PreferenceFragment fragment = PreferenceFragment.newInstance(this, interfaceFactory, olyCameraCoordinator.getChangeRunModeExecutor());
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment1, fragment);
+            val fragment = PreferenceFragment.newInstance(
+                this,
+                interfaceFactory,
+                olyCameraCoordinator.changeRunModeExecutor
+            )
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment1, fragment)
             // backstackに追加
-            transaction.addToBackStack(null);
-            transaction.commit();
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
 
     /**
-     *   ImageGridViewFragmentに表示を切り替える実処理
+     * ImageGridViewFragmentに表示を切り替える実処理
      *
      */
-    private void changeViewToImageGridViewFragment()
+    private fun changeViewToImageGridViewFragment()
     {
         try
         {
-            ImageGridViewFragment fragment = new ImageGridViewFragment();
-            fragment.setCamera(olyCameraObjectProvider.getOLYCamera());
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment1, fragment);
+            val fragment = ImageGridViewFragment()
+            fragment.setCamera(olyCameraObjectProvider.olyCamera)
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment1, fragment)
             // backstackに追加
-            transaction.addToBackStack(null);
-            transaction.commit();
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
 
     /**
-     *   ManipulateImageFragment に表示を切り替える実処理
+     * ManipulateImageFragment に表示を切り替える実処理
      *
      */
-    private void changeViewToManipulateImageFragment()
+    private fun changeViewToManipulateImageFragment()
     {
         try
         {
-            ManipulateImageFragment fragment = new ManipulateImageFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment1, fragment);
+            val fragment = ManipulateImageFragment()
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment1, fragment)
             // backstackに追加
-            transaction.addToBackStack(null);
-            transaction.commit();
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
 
-    @Override
-    public void changeSceneToCameraPropertyList()
+    override fun changeSceneToCameraPropertyList()
     {
-        changeViewToOlyCameraPropertyListFragment();
+        changeViewToOlyCameraPropertyListFragment()
     }
 
-    @Override
-    public void changeSceneToConfiguration()
+    override fun changeSceneToConfiguration()
     {
-        changeViewToPreferenceFragment();
+        changeViewToPreferenceFragment()
     }
 
-    @Override
-    public void changeSceneToPlaybackCamera()
+    override fun changeSceneToPlaybackCamera()
     {
-        changeViewToImageGridViewFragment();
+        changeViewToImageGridViewFragment()
     }
 
-    @Override
-    public void changeSceneToManipulateImage()
+    override fun changeSceneToManipulateImage()
     {
-        changeViewToManipulateImageFragment();
+        changeViewToManipulateImageFragment()
     }
 
-    @Override
-    public void changeSceneToDebugInformation()
+    override fun changeSceneToDebugInformation()
     {
         try
         {
-            if (logCatFragment == null)
+            if (!::logCatFragment.isInitialized)
             {
-                logCatFragment = LogCatFragment.newInstance();
+                logCatFragment = LogCatFragment.newInstance()
             }
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment1, logCatFragment);
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment1, logCatFragment)
             // backstackに追加
-            transaction.addToBackStack(null);
-            transaction.commit();
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
 
-    @Override
-    public void changeSceneToPlaybackPhone()
+    override fun changeSceneToPlaybackPhone()
     {
         // 起動時画面の選択...
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, ICameraPropertyAccessor.CHOICE_SPLASH_SCREEN);
+        try
+        {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, ICameraPropertyAccessor.CHOICE_SPLASH_SCREEN)
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
     }
 
-    @Override
-    public void exitApplication()
+    override fun exitApplication()
     {
         try
         {
             // カメラの電源をOFFにしたうえで、アプリケーションを終了する。
-            olyCameraCoordinator.disconnect(true);
-            finish();
+            olyCameraCoordinator.disconnect(true)
+            finish()
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
+
     /**
-     *  Bluetooth Smartでのカメラ起動シーケンスが終了したとき
+     * Bluetooth Smartでのカメラ起動シーケンスが終了したとき
      *
      */
-    @Override
-    public void wakeupExecuted(boolean isExecuted)
+    override fun wakeupExecuted(isExecuted: Boolean)
     {
-        Log.v(TAG, "wakeupExecuted() : " + isExecuted);
+        Log.v(TAG, "wakeupExecuted() : $isExecuted")
 
         // このタイミングでWifiの状況を確認に入る。
-        if (olyCameraCoordinator != null)
+        try
         {
-            olyCameraCoordinator.startWatchWifiStatus(this);
+            olyCameraCoordinator.startWatchWifiStatus(this)
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
         }
     }
 
     /**
-     *   BLE経由でカメラの電源を入れるかどうか
+     * BLE経由でカメラの電源を入れるかどうか
      *
      */
-    private boolean isBlePowerOn()
-    {
-        boolean ret = false;
-        try
-        {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            ret = preferences.getBoolean(ICameraPropertyAccessor.BLE_POWER_ON, false);
-            // Log.v(TAG, "isBlePowerOn() : " + ret);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return (ret);
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        Log.v(TAG, "onKeyDown()" + " " + keyCode);
-        try
-        {
-            if ((event.getAction() == KeyEvent.ACTION_DOWN)&&
-                    ((keyCode == KeyEvent.KEYCODE_VOLUME_UP)||(keyCode == KeyEvent.KEYCODE_CAMERA)))
+    private val isBlePowerOn: Boolean
+        get() {
+            var ret = false
+            try
             {
-                if (liveViewFragment != null)
+                val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+                ret = preferences.getBoolean(ICameraPropertyAccessor.BLE_POWER_ON, false)
+                // Log.v(TAG, "isBlePowerOn() : " + ret);
+            }
+            catch (e: Exception)
+            {
+                e.printStackTrace()
+            }
+            return (ret)
+        }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean
+    {
+        Log.v(TAG, "onKeyDown() $keyCode")
+        try
+        {
+            if ((event.action == KeyEvent.ACTION_DOWN) && ((keyCode == KeyEvent.KEYCODE_VOLUME_UP) || (keyCode == KeyEvent.KEYCODE_CAMERA)))
+            {
+                if (::liveViewFragment.isInitialized)
                 {
-                    return (liveViewFragment.handleKeyDown(keyCode, event));
+                    return (liveViewFragment.handleKeyDown(keyCode, event))
                 }
             }
         }
-        catch (Exception e)
+        catch (e: Exception)
         {
-            e.printStackTrace();
+            e.printStackTrace()
         }
-        return (super.onKeyDown(keyCode, event));
+        return (super.onKeyDown(keyCode, event))
+    }
+
+    companion object
+    {
+        private val TAG = MainActivity::class.java.simpleName
+
+        /////// Load OpenCV ///////
+        init {
+            System.loadLibrary("opencv_java3")
+        }
+
+        const val REQUEST_NEED_PERMISSIONS: Int = 1010
+        private val REQUIRED_PERMISSIONS = arrayOf(
+            permission.CAMERA,
+            permission.WRITE_EXTERNAL_STORAGE,
+            permission.ACCESS_NETWORK_STATE,
+            permission.ACCESS_WIFI_STATE,
+            permission.VIBRATE,
+            permission.INTERNET,
+            permission.BLUETOOTH,
+            permission.BLUETOOTH_ADMIN,
+            permission.ACCESS_COARSE_LOCATION,
+            permission.ACCESS_FINE_LOCATION,
+            permission.READ_EXTERNAL_STORAGE,
+            permission.ACCESS_MEDIA_LOCATION,
+            permission.BLUETOOTH_CONNECT,
+            permission.BLUETOOTH_SCAN,
+        )
     }
 }

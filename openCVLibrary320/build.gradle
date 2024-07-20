@@ -1,10 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 34
+    compileSdk 35
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 34
+        targetSdkVersion 35
         multiDexEnabled true
     }
 

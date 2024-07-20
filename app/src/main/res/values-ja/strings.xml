@@ -270,4 +270,5 @@
 
     <string name="action_delete">画像の削除</string>
 
+    <string name="permission_not_granted">許可が得られませんでしたので、終了します。</string>
 </resources>
