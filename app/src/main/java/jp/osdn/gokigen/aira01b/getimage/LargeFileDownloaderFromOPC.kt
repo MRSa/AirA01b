@@ -20,7 +20,8 @@ import jp.osdn.gokigen.aira01b.playback.OLYCameraContentInfoEx
 import java.io.File
 import java.io.OutputStream
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 
 /**
@@ -71,6 +72,7 @@ class LargeFileDownloaderFromOPC(private val activity: FragmentActivity, private
         try
         {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION)
             if (targetFileName.endsWith(".ORF"))
             {
                 intent.type = "image/x-olympus-orf"
@@ -80,7 +82,12 @@ class LargeFileDownloaderFromOPC(private val activity: FragmentActivity, private
                 intent.type = "video/mp4"
             }
             intent.putExtra(Intent.EXTRA_STREAM, fileUri)
-            activity.startActivityForResult(intent, 0)
+            //activity.startActivityForResult(intent, 0)
+            if (intent.resolveActivity(activity.applicationContext.packageManager) != null)
+            {
+                Log.v(TAG, "----- START ACTIVITY -----")
+                activity.startActivity(intent)
+            }
         }
         catch (e: Exception)
         {

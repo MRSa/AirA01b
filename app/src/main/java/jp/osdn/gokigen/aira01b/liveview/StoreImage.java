@@ -331,6 +331,7 @@ public class StoreImage implements IStoreImage
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_SEND);
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     intent.setType("image/jpeg");
                     intent.putExtra(Intent.EXTRA_STREAM, pictureUri);
                     activity.startActivityForResult(intent, 0);

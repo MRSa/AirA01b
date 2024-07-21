@@ -342,9 +342,14 @@ class JpegDownloaderFromOPC(private val activity: FragmentActivity, private val 
         try
         {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION)
             intent.type = "image/jpeg"
             intent.putExtra(Intent.EXTRA_STREAM, imageUri)
-            activity.startActivityForResult(intent, 0)
+            //activity.startActivityForResult(intent, 0)
+            if (intent.resolveActivity(activity.applicationContext.packageManager) != null) {
+                Log.v(TAG, "----- START ACTIVITY -----")
+                activity.startActivity(intent)
+            }
         }
         catch (e: Exception)
         {
