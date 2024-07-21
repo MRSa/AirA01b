@@ -7,8 +7,8 @@ android {
         applicationId "jp.osdn.gokigen.aira01b"
         minSdkVersion 14
         targetSdkVersion 35
-        versionCode 52
-        versionName "1.12.6"
+        versionCode 53
+        versionName "1.12.7"
         multiDexEnabled true
     }
     buildTypes {
@@ -33,6 +33,5 @@ dependencies {
     api files('libs/legacy_gpsadapter.jar')
     api files('libs/olycamerakit.jar')
     implementation "androidx.core:core-ktx:1.12.0"
-    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(':openCVLibrary320')
 }
