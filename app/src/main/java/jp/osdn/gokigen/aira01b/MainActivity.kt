@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,6 +18,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.preference.PreferenceManager
 import jp.osdn.gokigen.aira01b.liveview.LiveViewFragment
 import jp.osdn.gokigen.aira01b.logcat.LogCatFragment
@@ -77,6 +81,15 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
         try
         {
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
+
+        try
+        {
+            setupWindowInset(findViewById(R.id.base_layout))
         }
         catch (e: Exception)
         {
@@ -193,6 +206,32 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
 */
         // ConnectingFragmentを表示する
         changeViewToConnectingFragment()
+    }
+
+    private fun setupWindowInset(view: View)
+    {
+        try
+        {
+            // Display cutout insets
+            //   https://developer.android.com/develop/ui/views/layout/edge-to-edge
+            ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+                val bars = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars()
+                            or WindowInsetsCompat.Type.displayCutout()
+                )
+                v.updatePadding(
+                    left = bars.left,
+                    top = bars.top,
+                    right = bars.right,
+                    bottom = bars.bottom,
+                )
+                WindowInsetsCompat.CONSUMED
+            }
+        }
+        catch (e: Exception)
+        {
+            e.printStackTrace()
+        }
     }
 
     private fun allPermissionsGranted() : Boolean
