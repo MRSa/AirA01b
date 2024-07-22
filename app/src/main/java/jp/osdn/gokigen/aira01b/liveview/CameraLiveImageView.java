@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.annotation.NonNull;
 import androidx.exifinterface.media.ExifInterface;
 import androidx.preference.PreferenceManager;
 import jp.co.olympus.camerakit.OLYCamera;
@@ -79,17 +80,23 @@ public class CameraLiveImageView extends View implements CameraLiveViewListenerI
 
     private void initComponent(Context context)
     {
-        messageHolder = new ShowMessageHolder();
-        imageScaleType = ImageView.ScaleType.FIT_CENTER;
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        try
+        {
+            messageHolder = new ShowMessageHolder(context);
+            imageScaleType = ImageView.ScaleType.FIT_CENTER;
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        int framingGridStatus = Integer.parseInt(preferences.getString(ICameraPropertyAccessor.FRAME_GRID, ICameraPropertyAccessor.FRAME_GRID_DEFAULT_VALUE));
-        gridFrameDrawer = GridFrameFactory.getGridFrameDrawer(framingGridStatus);
+            int framingGridStatus = Integer.parseInt(preferences.getString(ICameraPropertyAccessor.FRAME_GRID, ICameraPropertyAccessor.FRAME_GRID_DEFAULT_VALUE));
+            gridFrameDrawer = GridFrameFactory.getGridFrameDrawer(framingGridStatus);
 
-        int converterType = Integer.parseInt(preferences.getString(ICameraPropertyAccessor.IMAGE_CONVERTER, ICameraPropertyAccessor.IMAGE_CONVERTER_DEFAULT_VALUE));
-        bitmapConverter = ImageConvertFactory.getImageConverter(converterType);
-
-        storeImage = new StoreImage(context);
+            int converterType = Integer.parseInt(preferences.getString(ICameraPropertyAccessor.IMAGE_CONVERTER, ICameraPropertyAccessor.IMAGE_CONVERTER_DEFAULT_VALUE));
+            bitmapConverter = ImageConvertFactory.getImageConverter(converterType);
+            storeImage = new StoreImage(context);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -111,7 +118,7 @@ public class CameraLiveImageView extends View implements CameraLiveViewListenerI
     }
 
     @Override
-    protected void onDraw(Canvas canvas)
+    protected void onDraw(@NonNull Canvas canvas)
     {
         super.onDraw(canvas);
         drawCanvas(canvas);
@@ -248,7 +255,7 @@ public class CameraLiveImageView extends View implements CameraLiveViewListenerI
     }
 
     /**
-     * Hides the forcus frame.
+     * Hides the focus frame.
      */
     public void hideFocusFrame()
     {
@@ -745,8 +752,8 @@ public class CameraLiveImageView extends View implements CameraLiveViewListenerI
                 viewPointY += (viewSizeHeight - imageSizeHeight * scale) / 2.0f;
                 break;
             case CENTER:
-                viewPointX += viewSizeWidth / 2.0  - imageSizeWidth  / 2.0f;
-                viewPointY += viewSizeHeight / 2.0 - imageSizeHeight / 2.0f;
+                viewPointX += viewSizeWidth / 2.0f  - imageSizeWidth  / 2.0f;
+                viewPointY += viewSizeHeight / 2.0f - imageSizeHeight / 2.0f;
                 break;
             default:
                 break;

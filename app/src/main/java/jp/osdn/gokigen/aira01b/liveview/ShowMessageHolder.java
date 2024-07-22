@@ -1,18 +1,11 @@
 package jp.osdn.gokigen.aira01b.liveview;
 
+import android.content.Context;
 import android.graphics.Color;
-import android.view.ViewDebug;
 
-/**
- *
- *
- * Created by MRSa on 2017/03/01.
- */
 class ShowMessageHolder implements IMessageDrawer
 {
-    /**
-     *
-     */
+
     private class messageHolder
     {
         private String message = "";
@@ -41,7 +34,13 @@ class ShowMessageHolder implements IMessageDrawer
 
         int getTextSize()
         {
-            return textSize;
+            float density = context.getResources().getDisplayMetrics().density;
+            int fontSize = (int)(textSize * density);
+            if (fontSize <= 0)
+            {
+                fontSize = textSize;
+            }
+            return (fontSize);
         }
 
         void setTextSize(int textSize)
@@ -50,25 +49,22 @@ class ShowMessageHolder implements IMessageDrawer
         }
     }
 
-    private messageHolder upperLeft = new messageHolder();
-    private messageHolder upperRight = new messageHolder();
-    private messageHolder center = new messageHolder();
-    private messageHolder lowerLeft = new messageHolder();
-    private messageHolder lowerRight = new messageHolder();
-    private messageHolder upperCenter = new messageHolder();
-    private messageHolder lowerCenter = new messageHolder();
+    private final messageHolder upperLeft = new messageHolder();
+    private final messageHolder upperRight = new messageHolder();
+    private final messageHolder center = new messageHolder();
+    private final messageHolder lowerLeft = new messageHolder();
+    private final messageHolder lowerRight = new messageHolder();
+    private final messageHolder upperCenter = new messageHolder();
+    private final messageHolder lowerCenter = new messageHolder();
+
     private float level_horizontal = Float.NaN;
     private float level_vertical = Float.NaN;
 
-    private float LEVELGAUGE_THRESHOLD_MIDDLE = 2.0f;
-    private float LEVELGAUGE_THRESHOLD_OVER = 15.0f;
+    private final Context context;
 
-    /**
-     *   コンストラクタ
-     *
-     */
-    ShowMessageHolder()
+    ShowMessageHolder(Context context)
     {
+        this.context = context;
         center.setTextSize(24);
     }
 
@@ -78,42 +74,15 @@ class ShowMessageHolder implements IMessageDrawer
      */
     private messageHolder decideHolder(MessageArea area)
     {
-        messageHolder target;
-        switch (area)
-        {
-            case CENTER:
-                target = center;
-                break;
-
-            case UPLEFT:
-                target = upperLeft;
-                break;
-
-            case UPRIGHT:
-                target = upperRight;
-                break;
-
-            case LOWLEFT:
-                target = lowerLeft;
-                break;
-
-            case LOWRIGHT:
-                target = lowerRight;
-                break;
-
-            case UPCENTER:
-                target = upperCenter;
-                break;
-
-            case LOWCENTER:
-                target = lowerCenter;
-                break;
-
-            default:
-                target = null;
-                break;
-        }
-        return (target);
+        return switch (area) {
+            case CENTER -> center;
+            case UPLEFT -> upperLeft;
+            case UPRIGHT -> upperRight;
+            case LOWLEFT -> lowerLeft;
+            case LOWRIGHT -> lowerRight;
+            case UPCENTER -> upperCenter;
+            case LOWCENTER -> lowerCenter;
+        };
     }
 
     /**
@@ -222,10 +191,12 @@ class ShowMessageHolder implements IMessageDrawer
     {
         value = Math.abs(value);
 
+        float LEVELGAUGE_THRESHOLD_MIDDLE = 2.0f;
         if (value < LEVELGAUGE_THRESHOLD_MIDDLE)
         {
             return (Color.GREEN);
         }
+        float LEVELGAUGE_THRESHOLD_OVER = 15.0f;
         if (value > LEVELGAUGE_THRESHOLD_OVER)
         {
             return (Color.RED);
