@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: C:\Android\android-sdk\build-tools\35.0.0\aidl.exe -pC:\Android\android-sdk\platforms\android-36\framework.aidl -oC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\build\generated\aidl_source_output_dir\debug\out -IC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\main\aidl -IC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\debug\aidl -dC:\Users\MRSa\AppData\Local\Temp\aidl17149937254756161256.d C:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\main\aidl\org\opencv\engine\OpenCVEngineInterface.aidl
+ * Using: C:\Android\android-sdk\build-tools\35.0.0\aidl.exe -pC:\Android\android-sdk\platforms\android-36\framework.aidl -oC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\build\generated\aidl_source_output_dir\debug\out -IC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\main\aidl -IC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\debug\aidl -dC:\Users\MRSa\AppData\Local\Temp\aidl15077205615809762569.d C:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\main\aidl\org\opencv\engine\OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /** Class provides a Java interface for OpenCV Engine Service. It's synchronous with native OpenCVEngine class. */
