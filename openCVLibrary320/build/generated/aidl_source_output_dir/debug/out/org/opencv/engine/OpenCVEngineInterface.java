@@ -1,5 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
+ * Using: C:\Android\android-sdk\build-tools\35.0.0\aidl.exe -pC:\Android\android-sdk\platforms\android-36\framework.aidl -oC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\build\generated\aidl_source_output_dir\debug\out -IC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\main\aidl -IC:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\debug\aidl -dC:\Users\MRSa\AppData\Local\Temp\aidl15077205615809762569.d C:\WORK\OSDN_repositories\AirA01b\openCVLibrary320\src\main\aidl\org\opencv\engine\OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /** Class provides a Java interface for OpenCV Engine Service. It's synchronous with native OpenCVEngine class. */
@@ -49,6 +50,7 @@ public interface OpenCVEngineInterface extends android.os.IInterface
   public static abstract class Stub extends android.os.Binder implements org.opencv.engine.OpenCVEngineInterface
   {
     /** Construct the stub at attach it to the interface. */
+    @SuppressWarnings("this-escape")
     public Stub()
     {
       this.attachInterface(this, DESCRIPTOR);
@@ -78,13 +80,9 @@ public interface OpenCVEngineInterface extends android.os.IInterface
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(descriptor);
       }
-      switch (code)
-      {
-        case INTERFACE_TRANSACTION:
-        {
-          reply.writeString(descriptor);
-          return true;
-        }
+      if (code == INTERFACE_TRANSACTION) {
+        reply.writeString(descriptor);
+        return true;
       }
       switch (code)
       {
@@ -237,6 +235,7 @@ public interface OpenCVEngineInterface extends android.os.IInterface
     static final int TRANSACTION_installVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
     static final int TRANSACTION_getLibraryList = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
   }
+  /** @hide */
   public static final java.lang.String DESCRIPTOR = "org.opencv.engine.OpenCVEngineInterface";
   /** @return Returns service version. */
   public int getEngineVersion() throws android.os.RemoteException;

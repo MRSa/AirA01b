@@ -1,14 +1,16 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
 
 android {
-    compileSdk 35
+    compileSdk 36
     defaultConfig {
         applicationId "jp.osdn.gokigen.aira01b"
         minSdkVersion 14
-        targetSdkVersion 35
-        versionCode 53
-        versionName "1.12.7"
+        targetSdkVersion 36
+        versionCode 54
+        versionName "1.12.8"
         multiDexEnabled true
     }
     buildTypes {
@@ -18,8 +20,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+    kotlinOptions {
+        jvmTarget = "21"
     }
     namespace 'jp.osdn.gokigen.aira01b'
 }
