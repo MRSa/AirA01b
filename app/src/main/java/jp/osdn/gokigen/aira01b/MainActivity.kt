@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
         }
         else
         {
-            Log.e(TAG, "OpenCV initialization failed!");
+            Log.e(TAG, "OpenCV initialization failed!")
             (Toast.makeText(this, R.string.load_opencv_failure, Toast.LENGTH_LONG)).show()
             // return;
         }

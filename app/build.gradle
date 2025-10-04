@@ -7,10 +7,10 @@ android {
     compileSdk 36
     defaultConfig {
         applicationId "jp.osdn.gokigen.aira01b"
-        minSdkVersion 21 // 14
+        minSdkVersion 21
         targetSdkVersion 36
-        versionCode 55
-        versionName "1.13.0"
+        versionCode 56
+        versionName "1.13.1"
         multiDexEnabled true
     }
     buildTypes {
