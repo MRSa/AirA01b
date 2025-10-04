@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AirA01b"
 include ':app'
-include ':openCVLibrary320'
