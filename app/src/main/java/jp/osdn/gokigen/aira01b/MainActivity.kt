@@ -34,8 +34,7 @@ import jp.osdn.gokigen.aira01b.olycamerawrapper.ble.ICameraPowerOn.PowerOnCamera
 import jp.osdn.gokigen.aira01b.playback.ImageGridViewFragment
 import jp.osdn.gokigen.aira01b.preference.ICameraPropertyAccessor
 import jp.osdn.gokigen.aira01b.preference.PreferenceFragment
-import org.opencv.android.BaseLoaderCallback
-import org.opencv.android.LoaderCallbackInterface
+import org.opencv.android.OpenCVLoader  // for OpenCV 4.x
 
 /**
  *
@@ -49,22 +48,6 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
     private lateinit var liveViewFragment: LiveViewFragment
     private lateinit var logCatFragment: LogCatFragment
 
-    private val mLoaderCallback: BaseLoaderCallback = object : BaseLoaderCallback(this)
-    {
-        override fun onManagerConnected(status: Int)
-        {
-            when (status)
-            {
-                SUCCESS -> {
-                    Log.i(TAG, "OpenCV loaded successfully")
-                }
-                else -> {
-                    super.onManagerConnected(status)
-                }
-            }
-        }
-    }
-
     /**
      *
      *
@@ -75,6 +58,18 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
 
         // 画面全体レイアウトの設定
         setContentView(R.layout.activity_main)
+
+        // OpenCVのロード
+        if (OpenCVLoader.initLocal())
+        {
+            Log.i(TAG, "OpenCV loaded successfully")
+        }
+        else
+        {
+            Log.e(TAG, "OpenCV initialization failed!");
+            (Toast.makeText(this, R.string.load_opencv_failure, Toast.LENGTH_LONG)).show()
+            // return;
+        }
 
         val bar = supportActionBar
         bar?.hide()
@@ -257,8 +252,6 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
                 // BLE経由でONしない時は、Wifiの状況を確認に入る。
                 olyCameraCoordinator.startWatchWifiStatus(this)
             }
-            Log.d(TAG, "OpenCV library found inside package. Using it!")
-            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS)
         }
         catch (e: Exception)
         {
@@ -388,7 +381,7 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
                     // Wifi 設定画面を表示する
                     startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
                 }
-                catch (ex: ActivityNotFoundException)
+                catch (_: ActivityNotFoundException)
                 {
                     // Activity が存在しなかった...設定画面が起動できなかった
                     Log.v(TAG, "android.content.ActivityNotFoundException...")
@@ -668,11 +661,6 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
     companion object
     {
         private val TAG = MainActivity::class.java.simpleName
-
-        /////// Load OpenCV ///////
-        init {
-            System.loadLibrary("opencv_java3")
-        }
 
         const val REQUEST_NEED_PERMISSIONS: Int = 1010
         private val REQUIRED_PERMISSIONS = arrayOf(

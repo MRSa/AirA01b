@@ -272,4 +272,5 @@
     <string name="action_delete">DELETE FILE(s)</string>
 
     <string name="permission_not_granted">Permissions not granted by the user.</string>
+    <string name="load_opencv_failure">OpenCV initialization failed!</string>
 </resources>

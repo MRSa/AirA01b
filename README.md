@@ -25,6 +25,6 @@ AirA01b は、OlympusCameraKit を使用してOLYMPUS AIR A01と通信を行い�
 ## OpenCVについて
 
 AirA01b は、フォーカスアシスト機能を実現するために、[OpenCV](https://opencv.org/)を使用しています。そのため、[OpenCVのライセンス](https://opencv.org/license/)の条件に従います。
-(使用しているOpenCVのバージョンは 3 であるため、[3-clause BSD License](https://github.com/opencv/opencv/blob/4.4.0/LICENSE)が適用されます。)
+(使用しているOpenCVのバージョンは 4.5 以降であるため、[Apache 2.0 License](https://github.com/opencv/opencv/blob/master/LICENSE)が適用されます。)
 
 -----------

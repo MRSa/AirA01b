@@ -271,4 +271,5 @@
     <string name="action_delete">画像の削除</string>
 
     <string name="permission_not_granted">許可が得られませんでしたので、終了します。</string>
+    <string name="load_opencv_failure">画像処理ライブラリ（OpenCV）のロードに失敗しました。一部機能は動作しません。</string>
 </resources>
