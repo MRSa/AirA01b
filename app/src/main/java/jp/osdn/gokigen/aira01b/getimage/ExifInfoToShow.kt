@@ -95,7 +95,7 @@ class ExifInfoToShow(private val activity: FragmentActivity, information: ExifIn
 
                 // ISO感度
                 msg += activity.getString(R.string.exif_iso_title)
-                msg += " ${getExifAttribute(exifInterface, ExifInterface.TAG_ISO_SPEED_RATINGS)}\r\n"
+                msg += " ${getExifAttribute(exifInterface, ExifInterface.TAG_PHOTOGRAPHIC_SENSITIVITY)}\r\n"
 
                 // カメラの製造元
                 msg += activity.getString(R.string.exif_maker_title)
