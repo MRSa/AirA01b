@@ -13,8 +13,8 @@ android {
         applicationId "jp.osdn.gokigen.aira01b"
         minSdkVersion 21
         targetSdkVersion 37
-        versionCode 57
-        versionName "1.13.2"
+        versionCode 58
+        versionName "1.13.3"
         multiDexEnabled true
     }
     buildTypes {

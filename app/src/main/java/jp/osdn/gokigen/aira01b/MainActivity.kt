@@ -145,6 +145,10 @@ class MainActivity : AppCompatActivity(), ICameraStatusReceiver, IChangeScene, P
                     permission.BLUETOOTH_CONNECT -> Build.VERSION.SDK_INT < Build.VERSION_CODES.S
                     permission.NEARBY_WIFI_DEVICES -> Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
                     permission.ACCESS_LOCAL_NETWORK -> Build.VERSION.SDK_INT < Build.VERSION_CODES.CINNAMON_BUN
+                    permission.BLUETOOTH -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                    permission.BLUETOOTH_ADMIN -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                    permission.ACCESS_FINE_LOCATION -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                    permission.ACCESS_COARSE_LOCATION -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
                     else -> false
                 }
 
